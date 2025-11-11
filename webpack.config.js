@@ -19,6 +19,7 @@ Encore
   // Entries
   .addEntry('app',  './assets/app.js')           // Basis/Onepager
   .addEntry('auth', './assets/auth/auth.js')     // Login/Forgot
+  .addEntry('admin', './assets/admin/index.js')  // Admin SPA
   .addEntry('video_marketing', './assets/video/marketing.js')
   .addEntry('video_marketing_explain', './assets/video/marketing_explain.js')
   .addEntry('video_product', './assets/video/product.js')

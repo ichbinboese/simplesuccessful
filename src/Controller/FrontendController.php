@@ -19,7 +19,7 @@ class FrontendController extends AbstractController
         return $this->render('frontend/onepager.html.twig');
     }
 
-    #[Route('/admin', name:'admin_app')]
+    #[Route('/admin/{vueRouting}', name: 'admin_app', requirements: ['vueRouting' => '.*'], defaults: ['vueRouting' => null])]
     public function admin(): Response
     {
         // The admin Vue SPA will handle routing inside /admin

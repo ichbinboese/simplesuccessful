@@ -3,7 +3,15 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
-  <div id="admin-app">
-    <admin-app></admin-app>
-  </div>
+  <div id="admin-app"></div>
+{% endblock %}
+
+{% block styles %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block scripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('admin') }}
 {% endblock %}

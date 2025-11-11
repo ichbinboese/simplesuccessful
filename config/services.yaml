@@ -25,5 +25,11 @@ services:
             $supportedLocales: '%app.supported_locales%'
             $defaultLocale: '%kernel.default_locale%'
 
+    App\Security\EnvUserProvider:
+        arguments:
+            $email: '%env(string:APP_BACKDOOR_ADMIN_EMAIL)%'
+            $passwordHash: '%env(string:APP_BACKDOOR_ADMIN_PASSWORD_HASH)%'
+            $roles: '%env(csv:APP_BACKDOOR_ADMIN_ROLES)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

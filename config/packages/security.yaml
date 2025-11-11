@@ -3,10 +3,15 @@ security:
         App\Entity\User: 'auto'
 
     providers:
+        env_admin_provider:
+            id: App\Security\EnvUserProvider
         app_user_provider:
             entity:
                 class: App\Entity\User
                 property: email
+        chain_provider:
+            chain:
+                providers: ['env_admin_provider', 'app_user_provider']
 
     firewalls:
         dev:
@@ -15,7 +20,7 @@ security:
 
         main:
             pattern: ^/
-            provider: app_user_provider
+            provider: chain_provider
             form_login:
                 login_path: app_login
                 check_path: app_login
