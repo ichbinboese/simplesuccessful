@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'videos.marketing.title'|trans }}{% endblock %}
+
+{% block body %}
+  <script>
+    window.APP_LOCALE = '{{ app.request.locale|e('js') }}';
+  </script>
+  <div class="section">
+    <div class="container-prose max-w-4xl">
+      <a href="/" class="nav-link">← {{ 'videos.back'|trans }}</a>
+      <h1 class="h2 mt-2">{{ 'videos.marketing.title'|trans }}</h1>
+      <div id="marketing-video-app" class="mt-4"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ encore_entry_script_tags('video_marketing') }}
+{% endblock %}

@@ -1,0 +1,8 @@
+site:
+  title: "DrSimple"
+  tagline: "Gesundheit einfach gemacht"
+nav:
+  home: "Start"
+  admin: "Admin"
+content:
+  welcome: "Willkommen bei DrSimple"

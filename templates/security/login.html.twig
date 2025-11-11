@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div id="auth-login-root"
+       data-props='{{ {
+         routes: {
+           home: (path("onepager") is defined ? path("onepager") : "/"),
+           login: path("app_login"),
+           forgot: path("app_forgot_password_request")
+         },
+         csrf: csrf_token("authenticate"),
+         lastUsername: last_username,
+         error: error ? error.messageKey|trans(error.messageData, "security") : null
+       }|json_encode|raw }}'></div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('auth') }}
+{% endblock %}

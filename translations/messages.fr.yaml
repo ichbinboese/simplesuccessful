@@ -1,0 +1,8 @@
+site:
+  title: "DrSimple"
+  tagline: "La santé simplifiée"
+nav:
+  home: "Accueil"
+  admin: "Admin"
+content:
+  welcome: "Bienvenue chez DrSimple"

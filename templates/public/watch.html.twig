@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <h1>{{ video.title }}</h1>
+    <video controls width="800" style="max-width:100%;">
+      <source src="{{ url('public_video_stream', {token: token}) }}" type="video/mp4">
+      Dein Browser unterstützt dieses Video nicht.
+    </video>
+    <p>{{ video.description }}</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default('en') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neue Erstgespräch-Anfrage</title>
+  <style>
+    /* Simple responsive email styles */
+    body { margin:0; padding:0; background:#f6f7f9; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:#0f172a; }
+    .wrapper { width:100%; background:#f6f7f9; padding:24px; }
+    .container { max-width:640px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .header { background:#111827; color:#fff; padding:20px 24px; }
+    .header h1 { margin:0; font-size:18px; }
+    .content { padding:24px; }
+    .label { font-size:12px; color:#64748b; margin:16px 0 4px; text-transform:uppercase; letter-spacing:.04em; }
+    .value { font-size:15px; color:#0f172a; white-space:pre-wrap; line-height:1.5; }
+    .footer { padding:16px 24px; color:#64748b; font-size:12px; border-top:1px solid #e5e7eb; }
+    .meta { color:#475569; font-size:12px; }
+    .logo { display:inline-flex; align-items:center; gap:10px; color:#fff; text-decoration:none; }
+    .pill { display:inline-block; font-size:12px; padding:2px 8px; border-radius:9999px; background:#eef2ff; color:#3730a3; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <span style="font-weight:700">DrSimple</span>
+          <span class="pill">Erstgespräch</span>
+        </div>
+      </div>
+      <div class="content">
+        <p style="margin:0 0 8px 0; font-size:16px;">Neue Anfrage für ein Erstgespräch:</p>
+
+        <div class="label">Name</div>
+        <div class="value">{{ name }}</div>
+
+        <div class="label">E-Mail</div>
+        <div class="value"><a href="mailto:{{ email }}" style="color:#2563eb; text-decoration:none;">{{ email }}</a></div>
+
+        <div class="label">Ziel / Anliegen</div>
+        <div class="value">{{ goal }}</div>
+
+        <div class="label">Meta</div>
+        <div class="meta">Locale: {{ locale|default('en') }} · IP: {{ ip|default('n/a') }} · UA: {{ ua|default('n/a') }}</div>
+      </div>
+      <div class="footer">
+        © {{ "now"|date('Y') }} Dr Simple · Diese Nachricht wurde automatisch versendet.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

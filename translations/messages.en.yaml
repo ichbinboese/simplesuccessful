@@ -1,0 +1,9 @@
+# Default English translations
+site:
+  title: "DrSimple"
+  tagline: "Healthcare made simple"
+nav:
+  home: "Home"
+  admin: "Admin"
+content:
+  welcome: "Welcome to DrSimple"

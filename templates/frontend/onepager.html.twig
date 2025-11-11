@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Startseite{% endblock %}
+
+{% block body %}
+  <script>
+    window.APP_LOCALE = '{{ app.request.locale|e('js') }}';
+  </script>
+  <div id="onepager-app">
+    <!-- Vue SPA mounts here -->
+  </div>
+{% endblock %}

@@ -1,0 +1,8 @@
+site:
+  title: "DrSimple"
+  tagline: "让医疗更简单"
+nav:
+  home: "主页"
+  admin: "管理"
+content:
+  welcome: "欢迎来到 DrSimple"
