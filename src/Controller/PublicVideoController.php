@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PublicVideoController extends AbstractController
@@ -102,10 +103,7 @@ class PublicVideoController extends AbstractController
             'Content-Length' => (string)$length,
         ];
 
-        $response = new Response(null, $status, $headers);
-
-        // stream callback (keine Ausgabe direkt!)
-        $response->setCallback(function () use ($fm, $start, $length) {
+        $response = new StreamedResponse(function () use ($fm, $start, $length) {
             fseek($fm, $start);
             $chunkSize = 1024 * 1024; // 1 MB
             $bytesToSend = $length;
@@ -116,7 +114,7 @@ class PublicVideoController extends AbstractController
                 $bytesToSend -= $read;
             }
             fclose($fm);
-        });
+        }, $status, $headers);
 
         return $response;
     }

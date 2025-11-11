@@ -30,7 +30,10 @@
               controls
               playsinline
               preload="metadata"
+              controlslist="nodownload noremoteplayback"
+              disablepictureinpicture
               class="w-full bg-black"
+              @contextmenu.prevent
             >
               <source :src="streamUrl" type="video/mp4" />
               Dein Browser unterstützt dieses Video nicht.

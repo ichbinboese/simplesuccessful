@@ -29,8 +29,15 @@
         <div class="space-y-2">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Video-Datei</label>
           <div
-            class="rounded-2xl border-2 border-dashed p-4 transition bg-slate-50/60 dark:bg-slate-900/30"
-            :class="file ? 'border-emerald-300 dark:border-emerald-400' : 'border-slate-200 dark:border-slate-700'"
+            class="rounded-2xl border-2 border-dashed p-6 transition bg-slate-50/60 dark:bg-slate-900/30"
+            :class="dragActive
+              ? 'border-sky-400 bg-sky-50/70 dark:border-sky-400/80 dark:bg-sky-900/20'
+              : file
+                ? 'border-emerald-300 dark:border-emerald-400'
+                : 'border-slate-200 dark:border-slate-700'"
+            @dragover.prevent="onDragOver"
+            @dragleave.prevent="onDragLeave"
+            @drop.prevent="onFileDrop"
           >
             <input
               ref="fileInput"
@@ -115,6 +122,7 @@ export default {
       progress: 0,
       message: '',
       messageType: null,
+      dragActive: false,
     };
   },
   computed: {
@@ -132,13 +140,38 @@ export default {
     },
     onFileChange(event) {
       const file = event.target.files?.[0];
+      this.setFile(file);
+    },
+    onDragOver() {
+      this.dragActive = true;
+    },
+    onDragLeave() {
+      this.dragActive = false;
+    },
+    onFileDrop(event) {
+      const file = event.dataTransfer?.files?.[0];
+      this.dragActive = false;
+      if (file) {
+        this.setFile(file);
+      }
+    },
+    setFile(file) {
       this.file = file || null;
       if (file) {
         this.fileName = file.name;
         this.fileSize = this.formatBytes(file.size);
+        if (this.$refs.fileInput) {
+          const fileList = createFileList(file);
+          if (fileList) {
+            this.$refs.fileInput.files = fileList;
+          }
+        }
       } else {
         this.fileName = '';
         this.fileSize = '';
+        if (this.$refs.fileInput) {
+          this.$refs.fileInput.value = '';
+        }
       }
     },
     formatBytes(bytes) {
@@ -159,6 +192,7 @@ export default {
       this.fileSize = '';
       this.uploading = false;
       this.progress = 0;
+      this.dragActive = false;
       if (clearMessage) {
         this.message = '';
         this.messageType = null;
@@ -209,4 +243,17 @@ export default {
     },
   },
 };
+
+function createFileList(file) {
+  try {
+    if (typeof DataTransfer !== 'undefined') {
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      return dt.files;
+    }
+  } catch (e) {
+    // ignore
+  }
+  return null;
+}
 </script>

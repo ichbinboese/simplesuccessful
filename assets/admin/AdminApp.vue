@@ -45,12 +45,18 @@
           </p>
         </div>
         <div class="flex flex-col items-end gap-3">
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
             <button
               class="btn btn-secondary text-sm"
               @click="showLinksPanel = !showLinksPanel"
             >
               {{ showLinksPanel ? 'Links ausblenden' : 'Freigabelinks' }}
+            </button>
+            <button
+              class="btn btn-secondary text-sm"
+              @click="showUsersPanel = !showUsersPanel"
+            >
+              {{ showUsersPanel ? 'Benutzer ausblenden' : 'Benutzer' }}
             </button>
             <button
               class="btn btn-secondary text-sm"
@@ -108,9 +114,17 @@
         />
       </section>
 
+      <admin-user-form @created="handleUserChanged" />
+
       <video-link-panel
         v-if="showLinksPanel"
         @close="showLinksPanel = false"
+      />
+
+      <user-panel
+        v-if="showUsersPanel"
+        @close="showUsersPanel = false"
+        @changed="handleUserChanged"
       />
     </main>
   </div>
@@ -121,9 +135,11 @@ import axios from 'axios';
 import VideoUpload from './components/VideoUpload.vue';
 import VideoList from './components/VideoList.vue';
 import VideoLinkPanel from './components/VideoLinkPanel.vue';
+import AdminUserForm from './components/AdminUserForm.vue';
+import UserPanel from './components/UserPanel.vue';
 
 export default {
-  components: { VideoUpload, VideoList, VideoLinkPanel },
+  components: { VideoUpload, VideoList, VideoLinkPanel, AdminUserForm, UserPanel },
   data() {
     return {
       videos: [],
@@ -132,6 +148,7 @@ export default {
       lastRefresh: null,
       isDark: false,
       showLinksPanel: false,
+      showUsersPanel: false,
     };
   },
   computed: {
@@ -186,6 +203,9 @@ export default {
     },
     LogOut() {
       window.location.href = '/logout';
+    },
+    handleUserChanged() {
+      // placeholder for future metrics or notifications
     },
     async refresh() {
       this.loading = true;
