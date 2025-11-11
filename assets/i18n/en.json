@@ -10,7 +10,8 @@
     "discovery_call": "Discovery Call",
     "get_started": "Get started",
     "start": "Start",
-    "collaborate": "Collaborate"
+    "collaborate": "Collaborate",
+      "admin_area": "Login"
   },
   "aria": {
     "toggle_dark": "Toggle dark mode",

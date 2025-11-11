@@ -10,7 +10,8 @@
     "discovery_call": "Kostenloses Erstgespräch",
     "get_started": "Jetzt starten",
     "start": "Starten",
-    "collaborate": "Zusammenarbeiten"
+    "collaborate": "Zusammenarbeiten",
+    "admin_area": "Login"
   },
   "aria": {
     "toggle_dark": "Dark Mode umschalten",

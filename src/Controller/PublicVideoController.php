@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PublicVideoController extends AbstractController
 {
@@ -28,12 +29,34 @@ class PublicVideoController extends AbstractController
             throw $this->createNotFoundException('Link not found or expired.');
         }
 
-        $video = $link->getVideo();
+        if ($link->startCountdown()) {
+            $this->em->flush();
+        }
 
-        // render a simple video player page
-        return $this->render('public/watch.html.twig', [
-            'video' => $video,
+        $video = $link->getVideo();
+        $streamUrl = $this->generateUrl('public_video_stream', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+        $props = [
+            'video' => [
+                'id' => $video->getId(),
+                'title' => $video->getTitle(),
+                'description' => $video->getDescription(),
+                'uploadedAt' => $video->getUploadedAt()?->format(DATE_ATOM),
+                'filename' => $video->getFilename(),
+            ],
             'token' => $token,
+            'streamUrl' => $streamUrl,
+            'shareUrl' => $this->generateUrl('public_video_watch', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL),
+            'expiresAt' => $link->getExpiresAt()?->format(DATE_ATOM),
+            'brand' => [
+                'name' => 'DrSimple',
+                'ctaLabel' => 'Zur Hauptseite',
+                'ctaHref' => '/',
+            ],
+        ];
+
+        return $this->render('public/watch.html.twig', [
+            'props' => $props,
         ]);
     }
 
@@ -43,6 +66,10 @@ class PublicVideoController extends AbstractController
         $link = $this->em->getRepository(VideoLink::class)->findOneBy(['token' => $token]);
         if (!$link || !$link->isValid()) {
             return new Response('Not found', 404);
+        }
+
+        if ($link->startCountdown()) {
+            $this->em->flush();
         }
 
         $filePath = $this->uploadDir . '/' . $link->getVideo()->getFilename();

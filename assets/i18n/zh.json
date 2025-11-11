@@ -10,7 +10,8 @@
     "discovery_call": "免费咨询",
     "get_started": "开始",
     "start": "开始",
-    "collaborate": "合作"
+    "collaborate": "合作",
+    "admin_area": "登录"
   },
   "aria": {
     "toggle_dark": "切换深色模式",

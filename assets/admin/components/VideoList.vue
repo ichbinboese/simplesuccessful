@@ -56,9 +56,9 @@
               <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{{ video.title || 'Unbenanntes Video' }}</h3>
               <span
                 class="badge"
-                :class="video.is_public ? 'badge-success' : 'badge-warning'"
+                :class="(video.isPublic ?? video.is_public) ? 'badge-success' : 'badge-warning'"
               >
-                {{ video.is_public ? 'Public' : 'Privat' }}
+                {{ (video.isPublic ?? video.is_public) ? 'Public' : 'Privat' }}
               </span>
             </div>
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
@@ -76,12 +76,55 @@
             </div>
           </div>
           <div class="flex shrink-0 flex-col gap-2 md:items-end">
-            <button class="btn btn-primary w-full md:w-auto" @click="$emit('createLink', video)">
-              Link erzeugen
+            <button
+              class="btn btn-primary w-full md:w-auto"
+              @click="createLink(video)"
+              :disabled="creatingLinkId === video.id"
+            >
+              <span v-if="creatingLinkId === video.id" class="flex items-center gap-2">
+                <span class="size-2 animate-ping rounded-full bg-white/60"></span>
+                Wird erstellt…
+              </span>
+              <span v-else>Freigabelink</span>
             </button>
-            <button class="btn btn-secondary w-full md:w-auto" @click="$emit('refresh')">
-              Aktualisieren
+            <button
+              class="btn btn-secondary w-full md:w-auto"
+              @click="deleteVideo(video)"
+              :disabled="deletingId === video.id"
+            >
+              <span v-if="deletingId === video.id">Lösche…</span>
+              <span v-else>Video löschen</span>
             </button>
+          </div>
+        </div>
+
+        <div
+          v-if="shareLinks[video.id]"
+          class="mt-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-sm dark:border-slate-700 dark:bg-slate-800/40"
+        >
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Direkter Link</p>
+          <div class="mt-3 flex flex-col gap-3">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center">
+              <input
+                :value="shareLinks[video.id].url"
+                readonly
+                class="input font-mono text-xs md:flex-1"
+              />
+              <button type="button" class="btn btn-ghost text-xs" @click="copyLink(video.id)">
+                {{ copyState[video.id] || 'Kopieren' }}
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <button type="button" class="btn btn-secondary text-xs" @click="shareEmail(video.id)">
+                Per E-Mail teilen
+              </button>
+              <button type="button" class="btn btn-secondary text-xs" @click="shareWhatsapp(video.id)">
+                WhatsApp
+              </button>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Gültigkeit startet beim ersten Öffnen und läuft nach 24 Stunden automatisch ab.
+            </p>
           </div>
         </div>
       </li>
@@ -90,16 +133,22 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   props: {
     videos: { type: Array, default: () => [] },
     loading: { type: Boolean, default: false },
     error: { type: String, default: '' },
   },
-  emits: ['refresh', 'createLink'],
+  emits: ['refresh'],
   data() {
     return {
       query: '',
+      shareLinks: {},
+      creatingLinkId: null,
+      deletingId: null,
+      copyState: {},
     };
   },
   computed: {
@@ -115,6 +164,77 @@ export default {
     },
   },
   methods: {
+    async createLink(video) {
+      if (this.creatingLinkId) return;
+      this.creatingLinkId = video.id;
+      try {
+        const { data } = await axios.post(`/api/admin/video/${video.id}/link`);
+        if (data?.url) {
+          this.shareLinks = {
+            ...this.shareLinks,
+            [video.id]: { url: data.url, createdAt: new Date() },
+          };
+        }
+      } catch (e) {
+        alert(e.response?.data?.message ?? 'Link konnte nicht erstellt werden.');
+      } finally {
+        this.creatingLinkId = null;
+      }
+    },
+    async deleteVideo(video) {
+      if (this.deletingId || !confirm(`"${video.title}" wirklich löschen?`)) return;
+      this.deletingId = video.id;
+      try {
+        await axios.delete(`/api/admin/video/${video.id}`);
+        const { [video.id]: removed, ...rest } = this.shareLinks;
+        this.shareLinks = rest;
+        this.$emit('refresh');
+      } catch (e) {
+        alert(e.response?.data?.message ?? 'Video konnte nicht gelöscht werden.');
+      } finally {
+        this.deletingId = null;
+      }
+    },
+    copyLink(videoId) {
+      const url = this.shareLinks[videoId]?.url;
+      if (!url) return;
+      const fallback = () => {
+        const temp = document.createElement('input');
+        temp.value = url;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+      };
+      const done = () => {
+        this.copyState = { ...this.copyState, [videoId]: 'Kopiert!' };
+        setTimeout(() => {
+          this.copyState = { ...this.copyState, [videoId]: 'Kopieren' };
+        }, 2000);
+      };
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(() => {
+          fallback();
+          done();
+        });
+      } else {
+        fallback();
+        done();
+      }
+    },
+    shareEmail(videoId) {
+      const url = this.shareLinks[videoId]?.url;
+      if (!url) return;
+      const subject = encodeURIComponent('Dein Video-Link');
+      const body = encodeURIComponent(`Hier ist dein Video-Link. Er ist 24 Stunden gültig:\n\n${url}`);
+      window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    },
+    shareWhatsapp(videoId) {
+      const url = this.shareLinks[videoId]?.url;
+      if (!url) return;
+      const text = encodeURIComponent(`Hier ist dein persönlicher Video-Link (24h gültig): ${url}`);
+      window.open(`https://wa.me/?text=${text}`, '_blank', 'noopener');
+    },
     formatDate(value) {
       if (!value) return 'Unbekannt';
       try {

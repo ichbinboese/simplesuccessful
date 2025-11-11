@@ -44,9 +44,26 @@
             Lade neue Assets hoch, teile private Links und verwalte dein Content-Archiv.
           </p>
         </div>
-        <div class="flex flex-col items-end gap-1">
-          <span class="text-xs text-slate-400">Zuletzt aktualisiert</span>
-          <strong class="text-base">{{ lastUpdateLabel }}</strong>
+        <div class="flex flex-col items-end gap-3">
+          <div class="flex items-center gap-2">
+            <button
+              class="btn btn-secondary text-sm"
+              @click="showLinksPanel = !showLinksPanel"
+            >
+              {{ showLinksPanel ? 'Links ausblenden' : 'Freigabelinks' }}
+            </button>
+            <button
+              class="btn btn-secondary text-sm"
+              @click="refresh"
+              :disabled="loading"
+            >
+              Aktualisieren
+            </button>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-400 block">Zuletzt aktualisiert</span>
+            <strong class="text-base">{{ lastUpdateLabel }}</strong>
+          </div>
         </div>
       </div>
     </header>
@@ -90,6 +107,11 @@
           @refresh="refresh"
         />
       </section>
+
+      <video-link-panel
+        v-if="showLinksPanel"
+        @close="showLinksPanel = false"
+      />
     </main>
   </div>
 </template>
@@ -98,9 +120,10 @@
 import axios from 'axios';
 import VideoUpload from './components/VideoUpload.vue';
 import VideoList from './components/VideoList.vue';
+import VideoLinkPanel from './components/VideoLinkPanel.vue';
 
 export default {
-  components: { VideoUpload, VideoList },
+  components: { VideoUpload, VideoList, VideoLinkPanel },
   data() {
     return {
       videos: [],
@@ -108,6 +131,7 @@ export default {
       error: '',
       lastRefresh: null,
       isDark: false,
+      showLinksPanel: false,
     };
   },
   computed: {

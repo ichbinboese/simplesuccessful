@@ -3,6 +3,7 @@ namespace App\Controller\Api\Admin;
 
 use App\Entity\Video;
 use App\Entity\VideoLink;
+use App\Repository\VideoLinkRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[Route('/api/admin/video', name:'api_admin_video_')]
 class VideoApiController extends AbstractController
@@ -89,6 +91,49 @@ class VideoApiController extends AbstractController
         $publicUrl = $this->generateUrl('public_video_watch', ['token' => $link->getToken()], \Symfony\Component\Routing\Generator\UrlGeneratorInterface::ABSOLUTE_URL);
 
         return $this->json(['token'=>$link->getToken(), 'url'=>$publicUrl]);
+    }
+
+    #[Route('/links', name:'links', methods:['GET'])]
+    public function links(
+        Request $request,
+        VideoLinkRepository $repository,
+        UrlGeneratorInterface $urlGenerator
+    ): JsonResponse {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $page = max(1, (int) $request->query->get('page', 1));
+        $perPage = max(1, min(100, (int) $request->query->get('perPage', 20)));
+        $status = $request->query->get('status', 'active');
+
+        [$links, $total] = $repository->paginateByStatus($page, $perPage, $status);
+
+        $data = array_map(function (VideoLink $link) use ($urlGenerator) {
+            $video = $link->getVideo();
+            return [
+                'id' => $link->getId(),
+                'token' => $link->getToken(),
+                'video' => [
+                    'id' => $video->getId(),
+                    'title' => $video->getTitle(),
+                ],
+                'createdAt' => $link->getCreatedAt()->format(DATE_ATOM),
+                'expiresAt' => $link->getExpiresAt()?->format(DATE_ATOM),
+                'recipientEmail' => $link->getRecipientEmail(),
+                'status' => $link->isValid() ? ($link->getExpiresAt() ? 'active_clicked' : 'active') : 'expired',
+                'clicked' => $link->getExpiresAt() !== null,
+                'shareUrl' => $urlGenerator->generate('public_video_watch', ['token' => $link->getToken()], UrlGeneratorInterface::ABSOLUTE_URL),
+            ];
+        }, $links);
+
+        return $this->json([
+            'items' => $data,
+            'meta' => [
+                'page' => $page,
+                'perPage' => $perPage,
+                'total' => $total,
+                'status' => $status,
+            ],
+        ]);
     }
 
     #[Route('/{id}', name:'delete', methods:['DELETE'])]

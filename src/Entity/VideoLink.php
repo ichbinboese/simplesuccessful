@@ -4,7 +4,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 
-#[ORM\Entity]
+use App\Repository\VideoLinkRepository;
+
+#[ORM\Entity(repositoryClass: VideoLinkRepository::class)]
 class VideoLink
 {
     #[ORM\Id]
@@ -46,7 +48,22 @@ class VideoLink
     public function setRecipientEmail(?string $e): self { $this->recipientEmail = $e; return $this; }
 
     public function getCreatedAt(): \DateTimeImmutable { return $this->createdAt; }
-    public function isValid(): bool {
+    public function isValid(): bool
+    {
         return $this->expiresAt === null || $this->expiresAt > new DateTimeImmutable();
+    }
+
+    /**
+     * Start a countdown that expires 24 hours after the first successful access.
+     * Returns true if the expiry timestamp was updated.
+     */
+    public function startCountdown(\DateTimeImmutable $now = new DateTimeImmutable(), int $hours = 24): bool
+    {
+        $deadline = $now->modify(sprintf('+%d hours', $hours));
+        if ($this->expiresAt === null || $this->expiresAt > $deadline) {
+            $this->expiresAt = $deadline;
+            return true;
+        }
+        return false;
     }
 }

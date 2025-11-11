@@ -34,6 +34,7 @@
         </select>
         <a href="#kontakt" class="btn btn-secondary hidden sm:inline-flex">{{ $t('cta.discovery_call') }}</a>
         <a href="#programme" class="btn btn-primary hidden md:inline-flex">{{ $t('cta.get_started') }}</a>
+        <a href="/admin" class="btn btn-secondary md:inline-flex">{{ $t('cta.admin_area') }}</a>
         <button @click="mobileOpen = !mobileOpen" class="md:hidden btn btn-ghost" :aria-label="$t('aria.open_menu')">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>

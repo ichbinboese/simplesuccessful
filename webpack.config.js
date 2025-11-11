@@ -23,6 +23,7 @@ Encore
   .addEntry('video_marketing', './assets/video/marketing.js')
   .addEntry('video_marketing_explain', './assets/video/marketing_explain.js')
   .addEntry('video_product', './assets/video/product.js')
+  .addEntry('public_watch', './assets/public/watch.js')
 
   // Vue 3
   .enableVueLoader(() => {}, { version: 3 })

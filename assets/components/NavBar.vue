@@ -35,6 +35,7 @@
         <a v-if="ctas?.primary && showCtas" :href="ctas.primary.href" class="btn btn-primary hidden md:inline-flex">
           {{ ctas.primary.label }}
         </a>
+        <a :href="adminHref" class="btn btn-primary w-full">Login</a>
 
         <!-- Mobile Toggle -->
         <button @click="mobileOpen = !mobileOpen" class="md:hidden btn btn-ghost" aria-label="Menü öffnen">
@@ -66,6 +67,7 @@ import { ref, onMounted } from 'vue';
 
 const props = defineProps({
   homeHref: { type: String, default: '/' },
+  adminHref: { type: String, default: '/admin' },
   links: { type: Array, default: () => [] },
   showMenu: { type: Boolean, default: true },
   showCtas: { type: Boolean, default: true },

@@ -10,7 +10,8 @@
     "discovery_call": "Llamada de descubrimiento",
     "get_started": "Empezar",
     "start": "Comenzar",
-    "collaborate": "Colaborar"
+    "collaborate": "Colaborar",
+    "admin_area": "Login"
   },
   "aria": {
     "toggle_dark": "Cambiar modo oscuro",
