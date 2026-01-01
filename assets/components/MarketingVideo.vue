@@ -1,30 +1,27 @@
 <template>
-  <PasswordGate storageKey="gate_marketing">
-    <SecureVideo
-      :src="resolvedSrc"
-      :type="type"
-      :poster="resolvedPoster"
-      :autoplay="autoplay"
-      :muted="muted"
-      :loop="loop"
-      :preload="preload"
-      :playsinline="playsinline"
-      :controls="controls"
-      :rounded="rounded"
-      :aria-label="$t('videos.aria.label')"
-      :title="$t('videos.marketing.title')"
-    />
-  </PasswordGate>
+  <SecureVideo
+    :src="resolvedSrc"
+    :type="type"
+    :poster="resolvedPoster"
+    :autoplay="autoplay"
+    :muted="muted"
+    :loop="loop"
+    :preload="preload"
+    :playsinline="playsinline"
+    :controls="controls"
+    :rounded="rounded"
+    :aria-label="$t('videos.aria.label')"
+    :title="$t('videos.marketing.title')"
+  />
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SecureVideo from './SecureVideo.vue'
-import PasswordGate from './PasswordGate.vue'
 
 const props = defineProps({
-  // Optional override maps; by default we use local assets under /build/videos
+  // Optional override maps; by default we use locale specific assets under /build/videos
   sources: { type: Object, default: () => ({}) },
   posters: { type: Object, default: () => ({}) },
   type: { type: String, default: 'video/mp4' },
@@ -39,22 +36,33 @@ const props = defineProps({
 
 const { locale } = useI18n()
 
-function buildLocalPath(lc) {
-  return `/build/videos/marketing/marketing_${lc}.mp4`
+const builtInSources = {
+  de: '/build/videos/marketing/marketing_de.mp4',
+  en: '/build/videos/marketing/marketing_en.mp4',
+  es: '/build/videos/marketing/marketing_es.mp4',
+  fr: '/build/videos/marketing/marketing_fr.mp4'
+}
+
+const normalizeLocale = () => (locale.value || 'en').split('-')[0].toLowerCase()
+
+function localePriority () {
+  const raw = normalizeLocale()
+  const order = [raw, 'en']
+  return [...new Set(order.filter(Boolean))]
 }
 
 const resolvedSrc = computed(() => {
-  const raw = (locale.value || 'en')
-  const lc = ['de', 'en'].includes(raw) ? raw : 'en'
-  if (props.sources[lc] || props.sources.en) {
-    return props.sources[lc] || props.sources.en
+  for (const key of localePriority()) {
+    if (props.sources[key]) return props.sources[key]
+    if (builtInSources[key]) return builtInSources[key]
   }
-  // Default to local asset path with en fallback
-  return buildLocalPath(lc)
+  return builtInSources.en || Object.values(builtInSources)[0]
 })
 
 const resolvedPoster = computed(() => {
-  const lc = locale.value || 'en'
-  return props.posters[lc] || props.posters.en || ''
+  for (const key of localePriority()) {
+    if (props.posters[key]) return props.posters[key]
+  }
+  return props.posters.en || ''
 })
 </script>

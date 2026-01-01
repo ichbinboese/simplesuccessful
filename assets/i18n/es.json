@@ -1,16 +1,11 @@
 {
   "nav": {
-    "about": "Sobre mí",
-    "coaching": "Coaching",
-    "programs": "Programas",
-    "contact": "Contacto",
     "language": "Idioma"
   },
   "cta": {
     "discovery_call": "Llamada de descubrimiento",
     "get_started": "Empezar",
     "start": "Comenzar",
-    "collaborate": "Colaborar",
     "admin_area": "Login"
   },
   "aria": {
@@ -20,82 +15,15 @@
   "mobile": {
     "theme": "Tema"
   },
-  "badges": {
-    "performance": "Rendimiento",
-    "mindset": "Mentalidad",
-    "aesthetics": "Estética",
-    "routines": "Rutinas",
-    "clarity": "Claridad",
-    "energy": "Energía",
-    "structure": "Estructura",
-    "popular": "Popular"
-  },
   "hero": {
-    "title": "Dr. Simple – Coach de estilo de vida y emprendedor",
-    "subtitle": "Energía sostenible, sistemas claros y un día a día estético. Dr Simple te ayuda a simplificar tu vida y tu negocio.",
-    "primary": "Llamada gratuita",
-    "secondary": "Sobre Dr Simple",
-    "card_title": "Claridad. Energía. Resultados.",
-    "card_text": "Estructura en lugar de hype: sueño, movimiento, nutrición y hábitos de negocio – simple, medible y aplicable.",
-    "image_alt": "Configuración de espacio de trabajo moderno"
-  },
-  "about": {
-    "title": "Dr Simple: Vivir y trabajar bien, de forma simple",
-    "text": "Soy Alexander Kahlsdorf. Acompaño a emprendedores y directivos a alinear el diseño del día a día, la energía y el rendimiento – sin burnout ni perfeccionismo.",
-    "image_alt": "Alexander – retrato de marcador de posición",
-    "items": {
-      "routine_title": "Diseño de rutinas",
-      "routine_text": "Flujo de mañana/noche, deep work, recuperación",
-      "business_title": "Salud del negocio",
-      "business_text": "Sistemas de decisión, delegación, diseño de reuniones",
-      "body_title": "Cuerpo y mente",
-      "body_text": "Sueño, nutrición, entrenamiento, modelos mentales",
-      "aesthetic_title": "Estética",
-      "aesthetic_text": "Espacio, estilo, minimalismo, claridad"
-    }
-  },
-  "pillars": {
-    "title": "Los 4 pilares",
-    "subtitle": "Un sistema que perdura – pragmático y medible.",
-    "cards": {
-      "clarity_title": "Visión y prioridades",
-      "clarity_text": "Definir lo que realmente importa. Poner límites. Eliminar el ruido.",
-      "energy_title": "Sueño, nutrición, entrenamiento",
-      "energy_text": "Micro‑hábitos para una energía estable durante el día.",
-      "structure_title": "Deep work y sistemas",
-      "structure_text": "El calendario como estrategia: bloques de foco, revisión, delegación.",
-      "aesthetics_title": "Entorno y estilo",
-      "aesthetics_text": "Configuración minimalista que aumenta el rendimiento y el bienestar."
-    }
+    "subtitle": "El éxito es simple cuando decides."
   },
   "programs": {
-    "title": "Programas",
-    "subtitle": "Elige tu ritmo – resultados claros en 30, 60 o 90 días.",
-    "starter_title": "Starter (30 días)",
-    "starter_text": "Auditoría, imagen objetivo, primeras rutinas. Perfecto para empezar.",
-    "starter_list": {
-      "item1": "Kickoff 1:1 + plan",
-      "item2": "Revisiones semanales",
-      "item3": "Paquete de plantillas"
-    },
-    "starter_cta": "Solicitar",
-    "momentum_badge": "Popular",
-    "momentum_title": "Momentum (60 días)",
-    "momentum_text": "Consolidar rutinas, aumentar la energía, afinar el foco.",
-    "momentum_list": {
-      "item1": "Coaching 1:1 cada 2 semanas",
-      "item2": "Seguimiento y revisión",
-      "item3": "Soporte por chat"
-    },
-    "momentum_cta": "Reservar plaza",
-    "leadership_title": "Leadership (90 días)",
-    "leadership_text": "Sistema de rendimiento para emprendedores y ejecutivos.",
-    "leadership_list": {
-      "item1": "Deep dives 1:1 semanales",
-      "item2": "Diseño de equipo y reuniones",
-      "item3": "Plan de estilo de vida individual"
-    },
-    "leadership_cta": "Reservar consulta",
+    "title": "Videos",
+    "subtitle": "Elige tu éxito.",
+    "starter_text": "Ingresos adicionales con cosas que ya hacemos cada día.",
+    "momentum_text": "¡La oportunidad de tu vida!",
+    "leadership_text": "Networking con venta directa.",
     "watch_marketing": "Ver video de marketing",
     "watch_explain": "Ver video explicativo",
     "watch_product": "Ver video de producto",
@@ -106,10 +34,9 @@
     }
   },
   "videos": {
-    "title": "Videos",
-    "marketing": { "title": "Video de marketing" },
-    "explain": { "title": "Video explicativo de marketing" },
-    "product": { "title": "Video de producto" },
+    "marketing": { "title": "Concepto – Venta directa" },
+    "explain": { "title": "Carrera – Marketing en red" },
+    "product": { "title": "Productos" },
     "back": "Volver al inicio",
     "aria": { "label": "Reproductor de video" },
     "lock": {
@@ -121,23 +48,6 @@
       "remember": "Recordar en este dispositivo"
     }
   },
-  "feed": {
-    "title": "Insights",
-    "subtitle": "Vida diaria, entrenamiento y vida emprendedora – fragmentos auténticos.",
-    "cta": "Colaborar",
-    "images": {
-      "gym_alt": "Gimnasio",
-      "workspace_alt": "Espacio de trabajo",
-      "coffee_alt": "Café",
-      "team_alt": "Equipo"
-    }
-  },
-  "testimonials": {
-    "quote1": "Dr Simple dio estructura a mi día a día – más energía y mejores decisiones.",
-    "author1": "Sophia R., Fundadora",
-    "quote2": "La mezcla de claridad, estilo y sistemas funciona – resultados en lugar de hype.",
-    "author2": "Daniel K., Ejecutivo"
-  },
   "contact": {
     "title": "Reservar llamada de descubrimiento",
     "subtitle": "Cuéntame brevemente dónde estás – te responderé pronto.",
@@ -146,6 +56,8 @@
       "name_placeholder": "Nombre y apellido",
       "email_label": "Correo electrónico",
       "email_placeholder": "tu@mail.com",
+      "phone_label": "Número de móvil",
+      "phone_placeholder": "p. ej. +49 170 1234567",
       "goal_label": "Objetivo",
       "goal_placeholder": "¿Dónde quieres estar en 90 días?",
       "privacy_note": "Sin spam. Cumple RGPD.",
@@ -156,6 +68,8 @@
       "error_name_required": "Por favor, introduce tu nombre.",
       "error_email_required": "Por favor, introduce tu correo electrónico.",
       "error_email_invalid": "Por favor, introduce un correo electrónico válido.",
+      "error_phone_required": "Por favor, introduce tu número de móvil.",
+      "error_phone_invalid": "Por favor, introduce un número de móvil válido.",
       "error_goal_required": "Por favor, cuéntame brevemente tu objetivo."
     }
   },
@@ -163,16 +77,16 @@
     "imprint": "Aviso legal",
     "privacy": "Privacidad",
     "contact": "Contacto",
-    "copyright": "© {year} Dr Simple · Alexander Kahlsdorf"
+    "copyright": "© {year} Simple Success · Alexander Kahlsdorf"
   },
   "legal": {
     "imprint": {
       "title": "Aviso legal",
-      "content": "<p><strong>Información del proveedor</strong></p><p>Dr Simple · Alexander Kahlsdorf<br>Calle Ejemplo 1<br>10115 Berlín<br>Alemania</p><p>Email: info@drsimple.example</p><p>IVA: DE123456789</p><p><em>Nota:</em> Contenido de marcador de posición. Sustituir por sus datos legales.</p>"
+      "content": "<p><strong>Información del proveedor</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Calle Ejemplo 1<br>10115 Berlín<br>Alemania</p><p>Email: info@drsimple.example</p><p>IVA: DE123456789</p><p><em>Nota:</em> Contenido de marcador de posición. Sustituir por sus datos legales.</p>"
     },
     "privacy": {
       "title": "Política de privacidad",
-      "content": "<p>Nos tomamos muy en serio su privacidad. Este sitio solo utiliza las tecnologías mínimas necesarias.</p><h4>Responsable</h4><p>Dr Simple · Alexander Kahlsdorf</p><h4>Contacto</h4><p>info@drsimple.example</p><h4>Nota</h4><p>Contenido de marcador de posición. Sustituir por su política de privacidad conforme al RGPD.</p>"
+      "content": "<p>Nos tomamos muy en serio su privacidad. Este sitio solo utiliza las tecnologías mínimas necesarias.</p><h4>Responsable</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contacto</h4><p>info@drsimple.example</p><h4>Nota</h4><p>Contenido de marcador de posición. Sustituir por su política de privacidad conforme al RGPD.</p>"
     },
     "close": "Cerrar"
   }

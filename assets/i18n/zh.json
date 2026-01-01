@@ -1,16 +1,11 @@
 {
   "nav": {
-    "about": "关于我",
-    "coaching": "辅导",
-    "programs": "项目",
-    "contact": "联系",
     "language": "语言"
   },
   "cta": {
     "discovery_call": "免费咨询",
     "get_started": "开始",
     "start": "开始",
-    "collaborate": "合作",
     "admin_area": "登录"
   },
   "aria": {
@@ -20,82 +15,15 @@
   "mobile": {
     "theme": "主题"
   },
-  "badges": {
-    "performance": "表现",
-    "mindset": "心态",
-    "aesthetics": "美学",
-    "routines": "习惯",
-    "clarity": "清晰",
-    "energy": "能量",
-    "structure": "结构",
-    "popular": "热门"
-  },
   "hero": {
-    "title": "Dr. Simple – 生活方式教练与企业家",
-    "subtitle": "可持续的精力、清晰的系统和美感的日常。Dr Simple 帮助你简化生活与事业。",
-    "primary": "免费咨询",
-    "secondary": "关于 Dr Simple",
-    "card_title": "清晰。能量。结果。",
-    "card_text": "结构胜于炒作：睡眠、运动、营养和商务习惯——简单、可衡量、可执行。",
-    "image_alt": "现代工作空间设置"
-  },
-  "about": {
-    "title": "Dr Simple：简单地好好生活与工作",
-    "text": "我是 Alexander Kahlsdorf。我帮助企业家与管理者协调日常设计、能量与产出——没有倦怠、没有完美主义。",
-    "image_alt": "Alexander——占位肖像",
-    "items": {
-      "routine_title": "习惯设计",
-      "routine_text": "早晚流程、深度工作、恢复",
-      "business_title": "商业健康",
-      "business_text": "决策系统、授权、会议设计",
-      "body_title": "身心",
-      "body_text": "睡眠、营养、训练、思维模型",
-      "aesthetic_title": "美学",
-      "aesthetic_text": "空间、风格、极简、清晰"
-    }
-  },
-  "pillars": {
-    "title": "四大支柱",
-    "subtitle": "一个经久耐用的系统——务实且可度量。",
-    "cards": {
-      "clarity_title": "愿景与优先级",
-      "clarity_text": "定义真正重要的事。设定边界。消除噪音。",
-      "energy_title": "睡眠、营养、训练",
-      "energy_text": "微习惯助力一整天稳定能量。",
-      "structure_title": "深度工作与系统",
-      "structure_text": "把日历作为战略：专注时间块、复盘、授权。",
-      "aesthetics_title": "环境与风格",
-      "aesthetics_text": "极简配置，提升产出与幸福感。"
-    }
+    "subtitle": "成功很简单——当你做出决定时。"
   },
   "programs": {
-    "title": "项目",
-    "subtitle": "选择你的节奏——30、60 或 90 天达成清晰成果。",
-    "starter_title": "Starter（30 天）",
-    "starter_text": "评估、目标图、首批习惯。入门之选。",
-    "starter_list": {
-      "item1": "1:1 启动 + 计划",
-      "item2": "每周跟进",
-      "item3": "模板包"
-    },
-    "starter_cta": "申请",
-    "momentum_badge": "热门",
-    "momentum_title": "Momentum（60 天）",
-    "momentum_text": "巩固习惯、提升能量、锐化专注。",
-    "momentum_list": {
-      "item1": "每两周 1:1 辅导",
-      "item2": "跟踪与复盘",
-      "item3": "聊天支持"
-    },
-    "momentum_cta": "预留名额",
-    "leadership_title": "Leadership（90 天）",
-    "leadership_text": "为企业家与高管打造的绩效系统。",
-    "leadership_list": {
-      "item1": "每周 1:1 深度交流",
-      "item2": "团队与会议设计",
-      "item3": "个性化生活方式计划"
-    },
-    "leadership_cta": "预约咨询",
+    "title": "视频",
+    "subtitle": "选择属于你的成功。",
+    "starter_text": "从我们每天都在做的事情中创造额外收入。",
+    "momentum_text": "这是你一生的机会！",
+    "leadership_text": "结合直销的人脉扩展。",
     "watch_marketing": "观看营销视频",
     "watch_explain": "观看讲解视频",
     "watch_product": "观看产品视频",
@@ -106,10 +34,10 @@
     }
   },
   "videos": {
-    "title": "视频",
-    "marketing": { "title": "营销视频" },
-    "explain": { "title": "营销讲解视频" },
-    "product": { "title": "产品视频" },
+    "marketing": { "title": "理念 – 直销" },
+    "explain": { "title": "职业 – 关系营销" },
+    "product": { "title": "产品" },
+    "back": "返回首页",
     "aria": { "label": "视频播放器" },
     "lock": {
       "title": "受保护的视频",
@@ -120,23 +48,6 @@
       "remember": "在此设备上记住"
     }
   },
-  "feed": {
-    "title": "洞见",
-    "subtitle": "日常、训练与创业者生活——真实片段。",
-    "cta": "合作",
-    "images": {
-      "gym_alt": "健身房",
-      "workspace_alt": "工作空间",
-      "coffee_alt": "咖啡",
-      "team_alt": "团队"
-    }
-  },
-  "testimonials": {
-    "quote1": "Dr Simple 让我的日常更有结构——精力更足，决策更佳。",
-    "author1": "Sophia R., 创始人",
-    "quote2": "清晰、美学与系统的结合正合适——结果胜过炒作。",
-    "author2": "Daniel K., 高管"
-  },
   "contact": {
     "title": "预约免费咨询",
     "subtitle": "简单说说你的现状——我会尽快联系你。",
@@ -145,6 +56,8 @@
       "name_placeholder": "名字 + 姓氏",
       "email_label": "邮箱",
       "email_placeholder": "you@mail.com",
+      "phone_label": "手机号",
+      "phone_placeholder": "例如 +49 170 1234567",
       "goal_label": "目标",
       "goal_placeholder": "90 天后你希望达到什么？",
       "privacy_note": "无垃圾邮件。符合 GDPR。",
@@ -155,6 +68,8 @@
       "error_name_required": "请输入你的姓名。",
       "error_email_required": "请输入你的邮箱。",
       "error_email_invalid": "请输入有效的邮箱地址。",
+      "error_phone_required": "请输入你的手机号。",
+      "error_phone_invalid": "请输入有效的手机号。",
       "error_goal_required": "请简单说明你的目标。"
     }
   },
@@ -162,16 +77,16 @@
     "imprint": "法律声明",
     "privacy": "隐私",
     "contact": "联系",
-    "copyright": "© {year} Dr Simple · Alexander Kahlsdorf"
+    "copyright": "© {year} Simple Success · Alexander Kahlsdorf"
   },
   "legal": {
     "imprint": {
       "title": "法律声明",
-      "content": "<p><strong>供应方信息</strong></p><p>Dr Simple · Alexander Kahlsdorf<br>示例街 1 号<br>10115 柏林<br>德国</p><p>邮箱：info@drsimple.example</p><p>增值税号：DE123456789</p><p><em>说明：</em> 占位内容，请替换为您的实际法律信息。</p>"
+      "content": "<p><strong>供应方信息</strong></p><p>Simple Success · Alexander Kahlsdorf<br>示例街 1 号<br>10115 柏林<br>德国</p><p>邮箱：info@drsimple.example</p><p>增值税号：DE123456789</p><p><em>说明：</em> 占位内容，请替换为您的实际法律信息。</p>"
     },
     "privacy": {
       "title": "隐私政策",
-      "content": "<p>我们非常重视您的隐私。本网站仅使用最低限度必要的技术。</p><h4>负责人</h4><p>Dr Simple · Alexander Kahlsdorf</p><h4>联系</h4><p>info@drsimple.example</p><h4>说明</h4><p>此为占位内容。请替换为完整且符合 GDPR 的隐私政策。</p>"
+      "content": "<p>我们非常重视您的隐私。本网站仅使用最低限度必要的技术。</p><h4>负责人</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>联系</h4><p>info@drsimple.example</p><h4>说明</h4><p>此为占位内容。请替换为完整且符合 GDPR 的隐私政策。</p>"
     },
     "close": "关闭"
   }

@@ -25,3 +25,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+.ddev/docker-compose.phpmyadmin_norouter.yaml
+.ddev/docker-compose.phpmyadmin.yaml
+.ddev/addon-metadata/phpmyadmin/manifest.yaml
+.ddev/commands/host/phpmyadmin

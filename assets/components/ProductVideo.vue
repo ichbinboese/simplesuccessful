@@ -38,21 +38,34 @@ const props = defineProps({
 
 const { locale } = useI18n()
 
-function buildLocalPath(lc) {
-  return `/build/videos/product/product_${lc}.mp4`
+const builtInSources = {
+  de: '/build/videos/product/product_de.mp4',
+  en: '/build/videos/product/product_en.mp4',
+  fr: '/build/videos/product/product_fr.mp4',
+  cn: '/build/videos/product/product_cn.mp4'
+}
+
+const normalizeLocale = () => (locale.value || 'en').split('-')[0].toLowerCase()
+
+function localePriority () {
+  const raw = normalizeLocale()
+  const aliases = raw === 'zh' ? ['cn'] : []
+  const order = [raw, ...aliases, 'en']
+  return [...new Set(order.filter(Boolean))]
 }
 
 const resolvedSrc = computed(() => {
-  const raw = (locale.value || 'en')
-  const lc = ['de', 'en'].includes(raw) ? raw : 'en'
-  if (props.sources[lc] || props.sources.en) {
-    return props.sources[lc] || props.sources.en
+  for (const key of localePriority()) {
+    if (props.sources[key]) return props.sources[key]
+    if (builtInSources[key]) return builtInSources[key]
   }
-  return buildLocalPath(lc)
+  return builtInSources.en || Object.values(builtInSources)[0]
 })
 
 const resolvedPoster = computed(() => {
-  const lc = locale.value || 'en'
-  return props.posters[lc] || props.posters.en || ''
+  for (const key of localePriority()) {
+    if (props.posters[key]) return props.posters[key]
+  }
+  return props.posters.en || ''
 })
 </script>

@@ -1,27 +1,24 @@
 <template>
-  <PasswordGate storageKey="gate_marketing_explain">
-    <SecureVideo
-      :src="resolvedSrc"
-      :type="type"
-      :poster="resolvedPoster"
-      :autoplay="autoplay"
-      :muted="muted"
-      :loop="loop"
-      :preload="preload"
-      :playsinline="playsinline"
-      :controls="controls"
-      :rounded="rounded"
-      :aria-label="$t('videos.aria.label')"
-      :title="$t('videos.explain.title')"
-    />
-  </PasswordGate>
+  <SecureVideo
+    :src="resolvedSrc"
+    :type="type"
+    :poster="resolvedPoster"
+    :autoplay="autoplay"
+    :muted="muted"
+    :loop="loop"
+    :preload="preload"
+    :playsinline="playsinline"
+    :controls="controls"
+    :rounded="rounded"
+    :aria-label="$t('videos.aria.label')"
+    :title="$t('videos.explain.title')"
+  />
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SecureVideo from './SecureVideo.vue'
-import PasswordGate from './PasswordGate.vue'
 
 const props = defineProps({
   sources: { type: Object, default: () => ({}) },
@@ -38,21 +35,32 @@ const props = defineProps({
 
 const { locale } = useI18n()
 
-function buildLocalPath(lc) {
-  return `/build/videos/marketing_ex/marketing_ex_${lc}.mp4`
+const builtInSources = {
+  de: '/build/videos/marketing_ex/marketing_ex_de.mp4',
+  en: '/build/videos/marketing_ex/marketing_ex_en.mp4',
+  es: '/build/videos/marketing_ex/marketing_ex_es.mp4'
+}
+
+const normalizeLocale = () => (locale.value || 'en').split('-')[0].toLowerCase()
+
+function localePriority () {
+  const raw = normalizeLocale()
+  const order = [raw, 'en']
+  return [...new Set(order.filter(Boolean))]
 }
 
 const resolvedSrc = computed(() => {
-  const raw = (locale.value || 'en')
-  const lc = ['de', 'en'].includes(raw) ? raw : 'en'
-  if (props.sources[lc] || props.sources.en) {
-    return props.sources[lc] || props.sources.en
+  for (const key of localePriority()) {
+    if (props.sources[key]) return props.sources[key]
+    if (builtInSources[key]) return builtInSources[key]
   }
-  return buildLocalPath(lc)
+  return builtInSources.en || Object.values(builtInSources)[0]
 })
 
 const resolvedPoster = computed(() => {
-  const lc = locale.value || 'en'
-  return props.posters[lc] || props.posters.en || ''
+  for (const key of localePriority()) {
+    if (props.posters[key]) return props.posters[key]
+  }
+  return props.posters.en || ''
 })
 </script>

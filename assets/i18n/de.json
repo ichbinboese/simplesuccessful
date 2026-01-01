@@ -1,16 +1,11 @@
 {
   "nav": {
-    "about": "Über mich",
-    "coaching": "Coaching",
-    "programs": "Programme",
-    "contact": "Kontakt",
     "language": "Sprache"
   },
   "cta": {
     "discovery_call": "Kostenloses Erstgespräch",
     "get_started": "Jetzt starten",
     "start": "Starten",
-    "collaborate": "Zusammenarbeiten",
     "admin_area": "Login"
   },
   "aria": {
@@ -20,81 +15,15 @@
   "mobile": {
     "theme": "Theme"
   },
-  "badges": {
-    "performance": "Performance",
-    "mindset": "Mindset",
-    "aesthetics": "Ästhetik",
-    "routines": "Routinen",
-    "clarity": "Klarheit",
-    "energy": "Energie",
-    "structure": "Struktur",
-    "popular": "Beliebt"
-  },
   "hero": {
-    "subtitle": "Nachhaltige Energie, klare Systeme und ein ästhetischer Alltag. Wir hilft dir, Lifestyle & Business einfach zu machen.",
-    "primary": "Kostenloses Erstgespräch",
-    "secondary": "Über Simple Successful",
-    "card_title": "Klarheit. Energie. Resultate.",
-    "card_text": "Struktur statt Hype: Schlaf, Bewegung, Ernährung und Business‑Gewohnheiten – einfach, messbar, umsetzbar.",
-    "image_alt": "Modernes Workspace‑Setup"
-  },
-  "about": {
-    "title": "Einfach gut leben & arbeiten",
-    "text": "Ich bin Alexander Kahlsdorf. Ich begleite Euch dabei, Alltagsdesign, Energie und Output in Einklang zu bringen – ohne Burnout, ohne Perfektionismus.",
-    "image_alt": "Alexander – Platzhalterportrait",
-    "items": {
-      "routine_title": "Routine‑Design",
-      "routine_text": "Morning/Evening Flow, Deep‑Work, Regeneration",
-      "business_title": "Business‑Health",
-      "business_text": "Entscheidungssysteme, Delegation, Meeting‑Design",
-      "body_title": "Body & Mind",
-      "body_text": "Schlaf, Ernährung, Training, mentale Modelle",
-      "aesthetic_title": "Ästhetik",
-      "aesthetic_text": "Raum, Stil, Minimalismus, Klarheit"
-    }
-  },
-  "pillars": {
-    "title": "Die 4 Säulen",
-    "subtitle": "Ein System, das langfristig trägt – pragmatisch und messbar.",
-    "cards": {
-      "clarity_title": "Vision & Prioritäten",
-      "clarity_text": "Was wirklich zählt definieren. Grenzen setzen. Noise eliminieren.",
-      "energy_title": "Schlaf, Ernährung, Training",
-      "energy_text": "Mikro‑Gewohnheiten für stabile Energie über den Tag.",
-      "structure_title": "Deep Work & Systeme",
-      "structure_text": "Kalender als Strategie: Fokusblöcke, Review, Delegation.",
-      "aesthetics_title": "Umgebung & Stil",
-      "aesthetics_text": "Minimalistisches Setup, das Output & Wohlbefinden erhöht."
-    }
+    "subtitle": "Erfolg ist einfach – wenn du entscheidest."
   },
   "programs": {
     "title": "Videos",
     "subtitle": "Wähle deinen Erfolg.",
-    "starter_title": "Starter (30 Tage)",
-    "starter_text": "Audit, Zielbild, erste Routinen. Perfekt für den Einstieg.",
-    "starter_list": {
-      "item1": "1:1 Kickoff + Plan",
-      "item2": "Wöchentliche Check‑ins",
-      "item3": "Template‑Bundle"
-    },
-    "starter_cta": "Anfragen",
-    "momentum_badge": "Neu",
-    "momentum_title": "Momentum (60 Tage)",
-    "momentum_text": "Routinen festigen, Energie erhöhen, Fokus schärfen.",
-    "momentum_list": {
-      "item1": "1:1 Coaching alle 2 Wochen",
-      "item2": "Tracking & Review",
-      "item3": "Chat‑Support"
-    },
-    "momentum_cta": "Platz sichern",
-    "leadership_title": "Leadership (90 Tage)",
-    "leadership_text": "Performance‑System für Unternehmer:innen & Executives.",
-    "leadership_list": {
-      "item1": "Wöchentliche 1:1 Deep‑Dives",
-      "item2": "Team‑ & Meeting‑Design",
-      "item3": "Individueller Lifestyle‑Plan"
-    },
-    "leadership_cta": "Beratung buchen",
+    "starter_text": "Zusätzliches Einkommen mit Dingen, die wir bereits jeden Tag tun.",
+    "momentum_text": "Die Chance deines Lebens!",
+    "leadership_text": "Netzwerken mit Direktvertrieb.",
     "watch_marketing": "Marketing‑Video ansehen",
     "watch_explain": "Erklärvideo ansehen",
     "watch_product": "Produktvideo ansehen",
@@ -105,10 +34,9 @@
     }
   },
   "videos": {
-    "title": "Videos",
-    "marketing": { "title": "Marketing Video" },
-    "explain": { "title": "Marketing Erklärvideo" },
-    "product": { "title": "Produktvideo" },
+    "marketing": { "title": "CONCEPT - DIRECT SALES" },
+    "explain": { "title": "CAREER - NETWORK MARKETING" },
+    "product": { "title": "PRODUCTS" },
     "back": "Zurück zur Startseite",
     "aria": { "label": "Videoplayer" },
     "lock": {
@@ -120,23 +48,6 @@
       "remember": "Auf diesem Gerät merken"
     }
   },
-  "feed": {
-    "title": "Einblicke",
-    "subtitle": "Alltag, Training und Unternehmer‑Leben – authentische Ausschnitte.",
-    "cta": "Zusammenarbeiten",
-    "images": {
-      "gym_alt": "Gym",
-      "workspace_alt": "Workspace",
-      "coffee_alt": "Kaffee",
-      "team_alt": "Team"
-    }
-  },
-  "testimonials": {
-    "quote1": "Simple Sucessful hat meinem Alltag Struktur gegeben – mehr Energie und bessere Entscheidungen.",
-    "author1": "Sophia R., Gründerin",
-    "quote2": "Die Mischung aus Klarheit, Stil und Systemen passt – Ergebnisse statt Hype.",
-    "author2": "Daniel K., Executive"
-  },
   "contact": {
     "title": "Erstgespräch buchen",
     "subtitle": "Erzähl mir kurz, wo du stehst – ich melde mich zeitnah.",
@@ -145,6 +56,8 @@
       "name_placeholder": "Vor- und Nachname",
       "email_label": "E‑Mail",
       "email_placeholder": "dein@mail.com",
+      "phone_label": "Mobilnummer",
+      "phone_placeholder": "z. B. +49 170 1234567",
       "goal_label": "Ziel",
       "goal_placeholder": "Wo willst du in 90 Tagen stehen?",
       "privacy_note": "Kein Spam. DSGVO‑konform.",
@@ -155,6 +68,8 @@
       "error_name_required": "Bitte gib deinen Namen ein.",
       "error_email_required": "Bitte gib deine E‑Mail ein.",
       "error_email_invalid": "Bitte gib eine gültige E‑Mail-Adresse ein.",
+      "error_phone_required": "Bitte gib deine Mobilnummer ein.",
+      "error_phone_invalid": "Bitte gib eine gültige Mobilnummer ein.",
       "error_goal_required": "Bitte beschreibe kurz dein Ziel."
     }
   },
@@ -162,16 +77,16 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "contact": "Kontakt",
-    "copyright": "© {year} Simple Successful · Alexander Kahlsdorf"
+    "copyright": "© {year} Simple Success · Alexander Kahlsdorf"
   },
   "legal": {
     "imprint": {
       "title": "Impressum",
-      "content": "<p><strong>Angaben gemäß § 5 TMG</strong></p><p>Dr Simple · Alexander Kahlsdorf<br>Beispielstraße 1<br>10115 Berlin<br>Deutschland</p><p>E-Mail: info@drsimple.example</p><p>Umsatzsteuer-ID: DE123456789</p><p><em>Hinweis:</em> Dies ist ein Platzhaltertext. Bitte mit Ihren echten Angaben ersetzen.</p>"
+      "content": "<p><strong>Angaben gemäß § 5 TMG</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Beispielstraße 1<br>10115 Berlin<br>Deutschland</p><p>E-Mail: info@drsimple.example</p><p>Umsatzsteuer-ID: DE123456789</p><p><em>Hinweis:</em> Dies ist ein Platzhaltertext. Bitte mit Ihren echten Angaben ersetzen.</p>"
     },
     "privacy": {
       "title": "Datenschutzerklärung",
-      "content": "<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Seite verwendet nur die notwendigsten Technologien.</p><h4>Verantwortlicher</h4><p>Dr Simple · Alexander Kahlsdorf</p><h4>Kontakt</h4><p>info@drsimple.example</p><h4>Hinweis</h4><p>Dies ist ein Platzhaltertext. Bitte durch Ihre vollständige DSGVO-konforme Datenschutzerklärung ersetzen.</p>"
+      "content": "<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Seite verwendet nur die notwendigsten Technologien.</p><h4>Verantwortlicher</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Kontakt</h4><p>info@drsimple.example</p><h4>Hinweis</h4><p>Dies ist ein Platzhaltertext. Bitte durch Ihre vollständige DSGVO-konforme Datenschutzerklärung ersetzen.</p>"
     },
     "close": "Schließen"
   }

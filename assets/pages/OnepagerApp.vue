@@ -1,324 +1,182 @@
 <template>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="navbar-inner">
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="#about" class="nav-link">{{ $t('nav.about') }}</a>
-        <a href="#coaching" class="nav-link">{{ $t('nav.coaching') }}</a>
-        <a href="#programme" class="nav-link">{{ $t('nav.programs') }}</a>
-        <a href="#kontakt" class="nav-link">{{ $t('nav.contact') }}</a>
-      </nav>
-
-      <!-- CTAs + Mobile Toggle -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Darkmode Toggle -->
-        <button
-          class="btn btn-ghost h-10 w-10 p-0" :aria-pressed="isDark"
-          @click="toggleTheme" :aria-label="$t('aria.toggle_dark')"
-          :title="$t('aria.toggle_dark')"
-        >
-          <!-- Moon when light -->
-          <svg v-if="!isDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
-            <path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79Z"/>
-          </svg>
-          <!-- Sun when dark -->
-          <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
-            <path fill="currentColor" d="M12 4a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4Zm0 15a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm8-7a1 1 0 0 1 1 1h1a1 1 0 1 1 0 2h-1a1 1 0 1 1-2 0 1 1 0 0 1 1-1Zm-17 1a1 1 0 0 1-1 1H1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm12.95 5.536a1 1 0 0 1 1.415 0l.707.707a1 1 0 0 1-1.415 1.414l-.707-.707a1 1 0 0 1 0-1.414ZM5.636 6.343a1 1 0 0 1 0-1.415l.707-.707A1 1 0 0 1 7.758 5.636l-.707.707a1 1 0 0 1-1.415 0Zm12.021-1.415a1 1 0 0 1 0 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707a1 1 0 0 1 1.415 0ZM6.343 18.364a1 1 0 0 1 1.415 0l.707.707a1 1 0 0 1-1.415 1.415l-.707-.707a1 1 0 0 1 0-1.415ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/>
-          </svg>
-        </button>
-
-        <!-- Language Switcher -->
-        <select v-model="currentLocale" class="lang-switch hidden sm:block" :aria-label="$t('nav.language')" :title="$t('nav.language')">
-          <option v-for="code in supportedLocales" :key="code" :value="code">{{ code.toUpperCase() }}</option>
-        </select>
-        <a href="#kontakt" class="btn btn-secondary hidden sm:inline-flex">{{ $t('cta.discovery_call') }}</a>
-        <a href="#programme" class="btn btn-primary hidden md:inline-flex">{{ $t('cta.get_started') }}</a>
-        <a href="/admin" class="btn btn-secondary md:inline-flex">{{ $t('cta.admin_area') }}</a>
-        <button @click="mobileOpen = !mobileOpen" class="md:hidden btn btn-ghost" :aria-label="$t('aria.open_menu')">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div v-show="mobileOpen" class="md:hidden border-t divider bg-white/80 dark:bg-stone-900/80 backdrop-blur">
-      <div class="container-prose py-3 grid gap-3">
-        <a @click="mobileOpen=false" href="#about" class="nav-link">{{ $t('nav.about') }}</a>
-        <a @click="mobileOpen=false" href="#coaching" class="nav-link">{{ $t('nav.coaching') }}</a>
-        <a @click="mobileOpen=false" href="#programme" class="nav-link">{{ $t('nav.programs') }}</a>
-        <a @click="mobileOpen=false" href="#kontakt" class="nav-link">{{ $t('nav.contact') }}</a>
-        <div class="flex gap-2 pt-1">
-          <a href="#kontakt" class="btn btn-secondary w-full">{{ $t('cta.discovery_call') }}</a>
-          <a href="#programme" class="btn btn-primary w-full">{{ $t('cta.start') }}</a>
+  <div class="porsche-page">
+    <header class="porsche-header transparent-header">
+      <div class="porsche-bar container-prose">
+        <div class="porsche-brand">
+          <span class="brand-mark"></span>
         </div>
-        <!-- Mobile Language Switcher -->
-        <div class="mt-2">
-          <label class="sr-only" for="mobile-locale">{{ $t('nav.language') || 'Language' }}</label>
-          <select id="mobile-locale" v-model="currentLocale" class="select select-ghost w-full" :aria-label="$t('nav.language') || 'Language'">
-            <option v-for="code in supportedLocales" :key="code" :value="code">{{ code.toUpperCase() }}</option>
-          </select>
-        </div>
-        <!-- Dark toggle duplicated in mobile for convenience -->
-        <button
-          class="btn btn-ghost mt-2"
-          :aria-pressed="isDark" @click="toggleTheme" :aria-label="$t('aria.toggle_dark')"
-        >
-          <span class="mr-2">{{ $t('mobile.theme') }}</span>
-          <svg v-if="!isDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path fill="currentColor" d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79Z"/></svg>
-          <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5"><path fill="currentColor" d="M12 4a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4Zm0 15a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm8-7a1 1 0 0 1 1 1h1a1 1 0 1 1 0 2h-1a1 1 0 1 1-2 0 1 1 0 0 1 1-1Zm-17 1a1 1 0 0 1-1 1H1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm12.95 5.536a1 1 0 0 1 1.415 0l.707.707a1 1 0 0 1-1.415 1.414l-.707-.707a1 1 0 0 1 0-1.414ZM5.636 6.343a1 1 0 0 1 0-1.415l.707-.707A1 1 0 0 1 7.758 5.636l-.707.707a1 1 0 0 1-1.415 0Zm12.021-1.415a1 1 0 0 1 0 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707a1 1 0 0 1 1.415 0ZM6.343 18.364a1 1 0 0 1 1.415 0l.707.707a1 1 0 0 1-1.415 1.415l-.707-.707a1 1 0 0 1 0-1.415Z"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="grid lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-6 order-1 lg:order-1">
-            <a href="#">
-                <!-- Light: sichtbar -->
-                <img
-                    class="block dark:hidden"
-                    :src="require('/assets/images/simple_logo.png')"
-                    alt="Logo"
-                    width="400"
-                />
-                <!-- Dark: sichtbar -->
-                <img
-                    class="hidden dark:block"
-                    :src="require('/assets/images/simple_logo_white.png')"
-                    alt="Logo (weiß)"
-                    width="400"
-                />
-            </a>
-          <p class="hero-subtitle">{{ $t('hero.subtitle') }}</p>
-          <div class="hero-cta flex flex-wrap gap-3">
-            <a href="#coaching" class="btn btn-primary">{{ $t('hero.primary') }}</a>
-            <a href="#about" class="btn btn-secondary">{{ $t('hero.secondary') }}</a>
-          </div>
-          <div class="mt-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-            <span class="badge">{{ $t('badges.performance') }}</span>
-            <span class="badge">{{ $t('badges.mindset') }}</span>
-            <span class="badge">{{ $t('badges.aesthetics') }}</span>
-            <span class="badge">{{ $t('badges.routines') }}</span>
-          </div>
-        </div>
-        <div class="lg:col-span-6 order-2 lg:order-2">
-          <div class="card elevate overflow-hidden">
-            <img class="w-full aspect-[16/10] object-cover rounded-xl" src="https://images.unsplash.com/photo-1614252368727-99517bc90d7b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3270" :alt="$t('hero.image_alt')"/>
-            <div class="mt-4">
-              <h3 class="h3 text-slate-900 dark:text-white">{{ $t('hero.card_title') }}</h3>
-              <p class="mt-2">{{ $t('hero.card_text') }}</p>
-            </div>
-          </div>
+        <div class="porsche-actions">
+          <button class="lang-toggle" @click="cycleLocale" :title="$t('nav.language')">
+            {{ currentLocale.toUpperCase() }}
+          </button>
+          <a href="#kontakt" class="nav-link discovery-link">{{ $t('cta.discovery_call') }}</a>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-    <!-- PROGRAMME / PAKETE -->
-    <section id="programme" class="section section-muted">
-        <div class="container-prose">
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="h2 text-slate-900 dark:text-white">{{ $t('programs.title') }}</h2>
-                <p class="mt-2">{{ $t('programs.subtitle') }}</p>
-            </div>
-            <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <!-- Card: Marketing Video -->
-                <div class="card card-hover">
-                    <router-link :to="{ name: 'video_marketing' }" class="block group" :aria-label="$t('programs.watch_marketing')">
-                        <img class="w-full aspect-[16/9] object-cover rounded-xl group-hover:opacity-95 transition" src="https://images.unsplash.com/photo-1713947503588-8ff8196dc4a3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3264" :alt="$t('programs.images.starter_alt')"/>
-                        <h3 class="h3 mt-4 text-slate-900 dark:text-white">{{ $t('videos.marketing.title') }}</h3>
-                        <p class="mt-2">{{ $t('programs.starter_text') }}</p>
-                    </router-link>
-                    <router-link :to="{ name: 'video_marketing' }" class="btn btn-primary mt-6 w-full">{{ $t('programs.watch_marketing') }}</router-link>
-                </div>
-                <!-- Card: Marketing Explain Video -->
-                <div class="card card-hover elevate">
-                    <router-link :to="{ name: 'video_marketing_explain' }" class="block group" :aria-label="$t('programs.watch_explain')">
-                        <img class="w-full aspect-[16/9] object-cover rounded-xl group-hover:opacity-95 transition" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1600&auto=format&fit=crop" :alt="$t('programs.images.momentum_alt')"/>
-                        <div class="badge badge-success mt-4">{{ $t('programs.momentum_badge') }}</div>
-                        <h3 class="h3 mt-2 text-slate-900 dark:text-white">{{ $t('videos.explain.title') }}</h3>
-                        <p class="mt-2">{{ $t('programs.momentum_text') }}</p>
-                    </router-link>
-                    <router-link :to="{ name: 'video_marketing_explain' }" class="btn btn-primary mt-6 w-full">{{ $t('programs.watch_explain') }}</router-link>
-                </div>
-                <!-- Card: Product Video -->
-                <div class="card card-hover">
-                    <router-link :to="{ name: 'video_product' }" class="block group" :aria-label="$t('programs.watch_product')">
-                        <img class="w-full aspect-[16/9] object-cover rounded-xl group-hover:opacity-95 transition" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" :alt="$t('programs.images.leadership_alt')"/>
-                        <h3 class="h3 mt-4 text-slate-900 dark:text-white">{{ $t('videos.product.title') }}</h3>
-                        <p class="mt-2">{{ $t('programs.leadership_text') }}</p>
-                    </router-link>
-                    <router-link :to="{ name: 'video_product' }" class="btn btn-primary mt-6 w-full">{{ $t('programs.watch_product') }}</router-link>
-                </div>
-            </div>
+    <section class="porsche-hero">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline :poster="heroPoster">
+          <source :src="heroVideo" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-gradient"></div>
+      <div class="hero-overlay container-prose">
+        <div class="hero-meta">
+          <span class="hero-divider"></span>
         </div>
+        <h1 class="hero-headline">
+          <span
+            v-for="(letter, idx) in animatedLetters"
+            :key="idx"
+            class="headline-letter"
+            :class="[{ visible: letter.visible }, letter.part === 'bold' ? 'letter-strong' : 'letter-italic']"
+          >
+            {{ letter.char === ' ' ? '\u00a0' : letter.char }}
+          </span>
+        </h1>
+      </div>
     </section>
-  <!-- ÜBER MICH -->
-  <section id="about" class="section section-muted">
-    <div class="container-prose grid lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-6 order-2 lg:order-1">
-        <h2 class="h2 text-slate-900 dark:text-white">{{ $t('about.title') }}</h2>
-        <p class="mt-3">{{ $t('about.text') }}</p>
-        <dl class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
-          <div class="card"><dt class="font-semibold">{{ $t('about.items.routine_title') }}</dt><dd class="mt-1">{{ $t('about.items.routine_text') }}</dd></div>
-          <div class="card"><dt class="font-semibold">{{ $t('about.items.business_title') }}</dt><dd class="mt-1">{{ $t('about.items.business_text') }}</dd></div>
-          <div class="card"><dt class="font-semibold">{{ $t('about.items.body_title') }}</dt><dd class="mt-1">{{ $t('about.items.body_text') }}</dd></div>
-          <div class="card"><dt class="font-semibold">{{ $t('about.items.aesthetic_title') }}</dt><dd class="mt-1">{{ $t('about.items.aesthetic_text') }}</dd></div>
-        </dl>
-      </div>
-      <div class="lg:col-span-6 order-1 lg:order-2">
-        <img class="w-full aspect-[4/3] object-cover rounded-2xl elevate" src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop" :alt="$t('about.image_alt')"/>
-      </div>
-    </div>
-  </section>
 
-  <!-- COACHING SÄULEN -->
-  <section id="coaching" class="section">
-    <div class="container-prose">
-      <div class="max-w-2xl">
-        <h2 class="h2 text-slate-900 dark:text-white">{{ $t('pillars.title') }}</h2>
-        <p class="mt-2">{{ $t('pillars.subtitle') }}</p>
+    <section class="porsche-stage">
+      <div class="container-prose space-y-6">
+        <div class="section-head">
+          <div class="accent-bar"></div>
+          <p class="section-kicker">Entdecken</p>
+          <h2 class="h2 text-stone-900 dark:text-white">Drive. Design. Lifestyle.</h2>
+        </div>
+        <div class="stage-grid">
+          <article v-for="tile in stageTiles" :key="tile.key" class="stage-card">
+            <img :src="tile.image" :alt="tile.alt" loading="lazy" class="stage-img" />
+            <div class="stage-overlay">
+              <p class="stage-kicker">{{ tile.kicker }}</p>
+              <h3 class="stage-title">{{ tile.title }}</h3>
+              <p class="stage-copy">{{ tile.copy }}</p>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <article class="card hover-lift">
-          <div class="badge mb-3">{{ $t('badges.clarity') }}</div>
-          <h3 class="h3 text-slate-900 dark:text-white">{{ $t('pillars.cards.clarity_title') }}</h3>
-          <p class="mt-2">{{ $t('pillars.cards.clarity_text') }}</p>
-        </article>
-        <article class="card hover-lift">
-          <div class="badge mb-3">{{ $t('badges.energy') }}</div>
-          <h3 class="h3 text-slate-900 dark:text-white">{{ $t('pillars.cards.energy_title') }}</h3>
-          <p class="mt-2">{{ $t('pillars.cards.energy_text') }}</p>
-        </article>
-        <article class="card hover-lift">
-          <div class="badge mb-3">{{ $t('badges.structure') }}</div>
-          <h3 class="h3 text-slate-900 dark:text-white">{{ $t('pillars.cards.structure_title') }}</h3>
-          <p class="mt-2">{{ $t('pillars.cards.structure_text') }}</p>
-        </article>
-        <article class="card hover-lift">
-          <div class="badge mb-3">{{ $t('badges.aesthetics') }}</div>
-          <h3 class="h3 text-slate-900 dark:text-white">{{ $t('pillars.cards.aesthetics_title') }}</h3>
-          <p class="mt-2">{{ $t('pillars.cards.aesthetics_text') }}</p>
-        </article>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EINBLICKE / FEED -->
-  <section class="section">
-    <div class="container-prose">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+    <section id="programme" class="porsche-section">
+      <div class="container-prose space-y-10">
+        <div class="section-head">
+          <div class="accent-bar"></div>
+          <p class="section-kicker">{{ $t('programs.title') }}</p>
+          <h2 class="h2 text-stone-900 dark:text-white">{{ $t('programs.subtitle') }}</h2>
+          <p class="section-sub">{{ $t('hero.subtitle') }}</p>
+        </div>
+        <div class="tile-grid">
+          <article v-for="tile in videoTiles" :key="tile.key" class="porsche-tile">
+            <div class="tile-media">
+              <img :src="tile.image" :alt="tile.alt" loading="lazy" />
+            </div>
+            <div class="tile-body">
+              <p class="tile-label">{{ tile.kicker }}</p>
+              <h3 class="tile-title">{{ tile.title }}</h3>
+              <p class="tile-copy">{{ tile.copy }}</p>
+              <router-link :to="tile.route" class="tile-link">
+                {{ tile.cta }}
+                <span aria-hidden="true">→</span>
+              </router-link>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="porsche-section contact-section">
+      <div class="container-prose contact-grid">
         <div>
-          <h2 class="h2 text-slate-900 dark:text-white">{{ $t('feed.title') }}</h2>
-          <p class="mt-2">{{ $t('feed.subtitle') }}</p>
+          <p class="section-kicker">{{ $t('cta.discovery_call') }}</p>
+          <h2 class="h2 text-stone-900 dark:text-white">{{ $t('contact.title') }}</h2>
+          <p class="section-sub">{{ $t('contact.subtitle') }}</p>
         </div>
-        <a href="#kontakt" class="btn btn-ghost self-start sm:self-auto">{{ $t('feed.cta') }}</a>
-      </div>
-      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-        <img class="rounded-xl object-cover aspect-[1/1] w-full" src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3270" :alt="$t('feed.images.gym_alt')"/>
-        <img class="rounded-xl object-cover aspect-[1/1] w-full" src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3348" :alt="$t('feed.images.workspace_alt')"/>
-        <img class="rounded-xl object-cover aspect-[1/1] w-full" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop" :alt="$t('feed.images.coffee_alt')"/>
-        <img class="rounded-xl object-cover aspect-[1/1] w-full" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" :alt="$t('feed.images.team_alt')"/>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section section-muted">
-    <div class="container-prose">
-      <div class="grid gap-6 md:grid-cols-2">
-        <figure class="card">
-          <blockquote class="text-lg text-slate-700 dark:text-slate-300">{{ $t('testimonials.quote1') }}</blockquote>
-          <figcaption class="mt-4 text-sm text-slate-500">{{ $t('testimonials.author1') }}</figcaption>
-        </figure>
-        <figure class="card">
-          <blockquote class="text-lg text-slate-700 dark:text-slate-300">{{ $t('testimonials.quote2') }}</blockquote>
-          <figcaption class="mt-4 text-sm text-slate-500">{{ $t('testimonials.author2') }}</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="section">
-    <div class="container-prose max-w-3xl">
-      <div class="card">
-        <h2 class="h2 text-slate-900 dark:text-white">{{ $t('contact.title') }}</h2>
-        <p class="mt-2">{{ $t('contact.subtitle') }}</p>
-        <div v-if="submitSuccess" class="mt-4 p-3 rounded-lg bg-green-50 text-green-800 border border-green-200" role="status" aria-live="polite">
-          {{ $t('contact.form.success') }}
-        </div>
-        <div v-if="submitError" class="mt-4 p-3 rounded-lg bg-red-50 text-red-800 border border-red-200" role="alert" aria-live="assertive">
-          {{ $t('contact.form.error_generic') }}
-        </div>
-        <form @submit.prevent="submitContact" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
-          <!-- Honeypot -->
-          <input class="hidden" type="text" v-model="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true" />
-
-          <div>
-            <label class="text-sm text-slate-600 dark:text-slate-400">{{ $t('contact.form.name_label') }}</label>
-            <input class="input mt-1" :placeholder="$t('contact.form.name_placeholder')" v-model.trim="form.name" :disabled="submitting" required />
-            <p v-if="errors.name" class="mt-1 text-xs text-red-600">{{ errors.name }}</p>
+        <div class="card contact-card">
+          <div v-if="submitSuccess" class="alert alert-success" role="status" aria-live="polite">
+            {{ $t('contact.form.success') }}
           </div>
-          <div>
-            <label class="text-sm text-slate-600 dark:text-slate-400">{{ $t('contact.form.email_label') }}</label>
-            <input class="input mt-1" type="email" :placeholder="$t('contact.form.email_placeholder')" v-model.trim="form.email" :disabled="submitting" required />
-            <p v-if="errors.email" class="mt-1 text-xs text-red-600">{{ errors.email }}</p>
+          <div v-if="submitError" class="alert alert-error" role="alert" aria-live="assertive">
+            {{ $t('contact.form.error_generic') }}
           </div>
-          <div class="md:col-span-2">
-            <label class="text-sm text-slate-600 dark:text-slate-400">{{ $t('contact.form.goal_label') }}</label>
-            <textarea class="textarea mt-1" :placeholder="$t('contact.form.goal_placeholder')" v-model.trim="form.goal" :disabled="submitting" rows="5" required></textarea>
-            <p v-if="errors.goal" class="mt-1 text-xs text-red-600">{{ errors.goal }}</p>
-          </div>
-          <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <span class="text-xs text-slate-500">{{ $t('contact.form.privacy_note') }}</span>
-            <button type="submit" class="btn btn-primary" :disabled="submitting">
-              <span v-if="!submitting">{{ $t('contact.form.submit') }}</span>
-              <span v-else>{{ $t('contact.form.submitting') }}</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+          <form @submit.prevent="submitContact" class="grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
+            <input class="hidden" type="text" v-model="honeypot" autocomplete="off" tabindex="-1" aria-hidden="true" />
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="site-footer-inner container-prose">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-        <p>{{ $t('footer.copyright', { year: new Date().getFullYear() }) }}</p>
-        <div class="flex items-center gap-4">
-          <a href="#imprint" @click.prevent="openImprint" class="nav-link">{{ $t('footer.imprint') }}</a>
-          <a href="#privacy" @click.prevent="openPrivacy" class="nav-link">{{ $t('footer.privacy') }}</a>
-          <a href="#kontakt" class="nav-link">{{ $t('footer.contact') }}</a>
+            <div>
+              <label class="input-label">{{ $t('contact.form.name_label') }}</label>
+              <input class="input mt-1" :placeholder="$t('contact.form.name_placeholder')" v-model.trim="form.name" :disabled="submitting" required />
+              <p v-if="errors.name" class="form-error">{{ errors.name }}</p>
+            </div>
+            <div>
+              <label class="input-label">{{ $t('contact.form.email_label') }}</label>
+              <input class="input mt-1" type="email" :placeholder="$t('contact.form.email_placeholder')" v-model.trim="form.email" :disabled="submitting" required />
+              <p v-if="errors.email" class="form-error">{{ errors.email }}</p>
+            </div>
+            <div class="md:col-span-2">
+              <label class="input-label">{{ $t('contact.form.phone_label') }}</label>
+              <input class="input mt-1" type="tel" :placeholder="$t('contact.form.phone_placeholder')" v-model.trim="form.phone" :disabled="submitting" required />
+              <p v-if="errors.phone" class="form-error">{{ errors.phone }}</p>
+            </div>
+            <div class="md:col-span-2">
+              <label class="input-label">{{ $t('contact.form.goal_label') }}</label>
+              <textarea class="textarea mt-1" :placeholder="$t('contact.form.goal_placeholder')" v-model.trim="form.goal" :disabled="submitting" rows="5" required></textarea>
+              <p v-if="errors.goal" class="form-error">{{ errors.goal }}</p>
+            </div>
+            <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <span class="privacy-note">{{ $t('contact.form.privacy_note') }}</span>
+              <button type="submit" class="btn btn-primary" :disabled="submitting">
+                <span v-if="!submitting">{{ $t('contact.form.submit') }}</span>
+                <span v-else>{{ $t('contact.form.submitting') }}</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- LEGAL MODALS -->
-  <Modal v-model="showImprint" :title="$t('legal.imprint.title')" size="lg" @close="onModalClose('imprint')">
-    <div class="prose dark:prose-invert max-w-none" v-html="$t('legal.imprint.content')"></div>
-  </Modal>
-  <Modal v-model="showPrivacy" :title="$t('legal.privacy.title')" size="lg" @close="onModalClose('privacy')">
-    <div class="prose dark:prose-invert max-w-none" v-html="$t('legal.privacy.content')"></div>
-  </Modal>
+    <footer class="site-footer">
+      <div class="site-footer-inner container-prose">
+        <div class="footer-row">
+          <p>{{ $t('footer.copyright', { year: new Date().getFullYear() }) }}</p>
+          <div class="footer-links">
+            <a href="#imprint" @click.prevent="openImprint" class="nav-link">{{ $t('footer.imprint') }}</a>
+            <a href="#privacy" @click.prevent="openPrivacy" class="nav-link">{{ $t('footer.privacy') }}</a>
+            <a href="#kontakt" class="nav-link">{{ $t('footer.contact') }}</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <Modal v-model="showImprint" :title="$t('legal.imprint.title')" size="lg" @close="onModalClose('imprint')">
+      <div class="prose dark:prose-invert max-w-none" v-html="$t('legal.imprint.content')"></div>
+    </Modal>
+    <Modal v-model="showPrivacy" :title="$t('legal.privacy.title')" size="lg" @close="onModalClose('privacy')">
+      <div class="prose dark:prose-invert max-w-none" v-html="$t('legal.privacy.content')"></div>
+    </Modal>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import Modal from '@/components/Modal.vue'
 
-const mobileOpen = ref(false)
-const isDark = ref(false)
+import heroPoster from '@/images/bilder/pexels-daniel-andraski-197681005-13716061.jpg'
+import shotMarketing from '@/images/bilder/pexels-drew-williams-1285451-3439481.jpg'
+import shotExplain from '@/images/bilder/pexels-luna-lovegood-4087182.jpg'
+import shotProduct from '@/images/bilder/pexels-anna-nekrashevich-6203311.jpg'
+import shotWorkshop from '@/images/bilder/pexels-thirdman-8470839.jpg'
+import shotLifestyle from '@/images/bilder/pexels-arina-krasnikova-5712085.jpg'
+import shotNight from '@/images/bilder/pexels-vladbagacian-1228396.edited.jpg'
 
-// Legal modals state
+const heroVideo = '/build/videos/Video.Header.Simple.Successful.mp4'
+
+const isDark = ref(false)
+const animatedLetters = ref([])
+const letterTimers = []
+let letterCycle = null
+
 const showImprint = ref(false)
 const showPrivacy = ref(false)
 
@@ -331,16 +189,14 @@ function openPrivacy() {
   try { history.replaceState(null, '', '#privacy') } catch (e) {}
 }
 function onModalClose(which) {
-  // Clear hash if it matches the modal we closed
   try {
     const hash = location.hash.replace('#', '')
     if (hash === which) history.replaceState(null, '', ' ')
   } catch (e) {}
 }
 
-// i18n locale handling and language switcher
 const { t, locale } = useI18n()
-const supportedLocales = ['en', 'de', 'fr', 'es', 'zh']
+const supportedLocales = ['de', 'en', 'es']
 const currentLocale = ref(locale.value)
 
 watch(currentLocale, (val) => {
@@ -350,7 +206,87 @@ watch(currentLocale, (val) => {
   try { document.documentElement.setAttribute('lang', val) } catch (e) {}
 })
 
-import logoUrl from '/assets/images/dr_simple_black.svg'
+const heroPhrase = 'SIMPLE. SUCCESSFUL.'
+const boldLength = 7
+
+function startLetterReveal () {
+  letterTimers.forEach(clearTimeout)
+  letterTimers.length = 0
+  const baseLetters = heroPhrase.split('').map((char, idx) => ({
+    char,
+    part: idx < boldLength ? 'bold' : 'italic',
+    visible: false
+  }))
+  animatedLetters.value = baseLetters
+  const order = [...baseLetters.keys()].sort(() => Math.random() - 0.5)
+  order.forEach((idx, seq) => {
+    const delay = 100 + Math.random() * 900 + seq * 35
+    const timer = setTimeout(() => {
+      animatedLetters.value[idx].visible = true
+    }, delay)
+    letterTimers.push(timer)
+  })
+}
+
+const videoTiles = computed(() => [
+  {
+    key: 'marketing',
+    title: t('videos.marketing.title'),
+    kicker: 'Direct Sales',
+    copy: t('programs.starter_text'),
+    cta: t('programs.watch_marketing'),
+    route: { name: 'video_marketing' },
+    image: shotMarketing,
+    alt: t('programs.images.starter_alt')
+  },
+  {
+    key: 'explain',
+    title: t('videos.explain.title'),
+    kicker: 'Network',
+    copy: t('programs.momentum_text'),
+    cta: t('programs.watch_explain'),
+    route: { name: 'video_marketing_explain' },
+    image: shotExplain,
+    alt: t('programs.images.momentum_alt')
+  },
+  {
+    key: 'product',
+    title: t('videos.product.title'),
+    kicker: 'Products',
+    copy: t('programs.leadership_text'),
+    cta: t('programs.watch_product'),
+    route: { name: 'video_product' },
+    image: shotProduct,
+    alt: t('programs.images.leadership_alt')
+  }
+])
+
+const stageTiles = computed(() => [
+  {
+    key: 'drive',
+    kicker: 'Performance',
+    title: 'Night Drive',
+    copy: 'Kraft, Präzision und maximale Kontrolle – bereit für jede Straße.',
+    image: shotNight,
+    alt: 'Sportwagen bei Nacht'
+  },
+  {
+    key: 'workshop',
+    kicker: 'Experience',
+    title: 'Werkstattkultur',
+    copy: 'Feinschliff bis ins letzte Detail. Handwerk, das überzeugt.',
+    image: shotWorkshop,
+    alt: 'Mechaniker in Garage'
+  },
+  {
+    key: 'lifestyle',
+    kicker: 'Lifestyle',
+    title: 'Signature Living',
+    copy: 'Design, das Performance spricht – auch abseits der Strecke.',
+    image: shotLifestyle,
+    alt: 'Mode Detail'
+  }
+])
 
 function applyTheme(dark) {
   isDark.value = !!dark
@@ -363,17 +299,21 @@ function toggleTheme() {
   applyTheme(!isDark.value)
 }
 
+function cycleLocale() {
+  const idx = supportedLocales.indexOf(currentLocale.value) ?? 0
+  const next = supportedLocales[(idx + 1) % supportedLocales.length]
+  currentLocale.value = next
+}
+
 onMounted(() => {
-  // 1) load stored preference
   let stored
   try { stored = localStorage.getItem('theme') } catch (e) {}
   if (stored === 'dark' || stored === 'light') {
     applyTheme(stored === 'dark')
   } else {
-    // 2) default to light mode (requested)
     applyTheme(false)
   }
-  // 3) sync when system preference changes
+
   try {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
     const handler = (e) => {
@@ -383,53 +323,59 @@ onMounted(() => {
     if (mq.addEventListener) mq.addEventListener('change', handler)
     else mq.addListener && mq.addListener(handler)
   } catch (e) {}
-  // Close mobile menu on route/hash change and handle legal deep links
+
   window.addEventListener('hashchange', () => {
-    mobileOpen.value = false
     const h = (location.hash || '').replace('#', '')
     if (h === 'imprint') showImprint.value = true
     if (h === 'privacy') showPrivacy.value = true
   })
-  // Open matching modal when arriving with #imprint or #privacy
   try {
     const h = (location.hash || '').replace('#', '')
     if (h === 'imprint') showImprint.value = true
     if (h === 'privacy') showPrivacy.value = true
   } catch (e) {}
+
+  startLetterReveal()
+  letterCycle = setInterval(startLetterReveal, 5200)
 })
 
-// --- Contact form state & submission ---
+onUnmounted(() => {
+  letterTimers.forEach(clearTimeout)
+  if (letterCycle) clearInterval(letterCycle)
+})
+
 const submitting = ref(false)
 const submitSuccess = ref(false)
 const submitError = ref(false)
 const errors = ref({})
 const honeypot = ref('')
-const form = ref({ name: '', email: '', goal: '' })
+const form = ref({ name: '', email: '', phone: '', goal: '' })
 
 async function submitContact () {
   submitSuccess.value = false
   submitError.value = false
   errors.value = {}
 
-  // simple client validation
   if (!form.value.name) errors.value.name = t('contact.form.error_name_required')
   if (!form.value.email) errors.value.email = t('contact.form.error_email_required')
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.value.email)) errors.value.email = t('contact.form.error_email_invalid')
+  else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.value.email)) errors.value.email = t('contact.form.error_email_invalid')
+  if (!form.value.phone) errors.value.phone = t('contact.form.error_phone_required')
+  else if (!/^\\+?[0-9\\s().-]{7,}$/.test(form.value.phone)) errors.value.phone = t('contact.form.error_phone_invalid')
   if (!form.value.goal) errors.value.goal = t('contact.form.error_goal_required')
   if (Object.keys(errors.value).length) return
 
   submitting.value = true
   try {
-    const { locale } = useI18n()
     await axios.post('/api/contact', {
       name: form.value.name,
       email: form.value.email,
+      phone: form.value.phone,
       goal: form.value.goal,
       locale: locale.value,
       website: honeypot.value
     })
     submitSuccess.value = true
-    form.value = { name: '', email: '', goal: '' }
+    form.value = { name: '', email: '', phone: '', goal: '' }
     honeypot.value = ''
   } catch (e) {
     if (e.response && e.response.status === 422 && e.response.data && e.response.data.errors) {
@@ -444,53 +390,534 @@ async function submitContact () {
 </script>
 
 <style scoped>
-/* Alle Styles kommen aus app.css/Tailwind. Nur Responsiveness-Sugar: */
-.aspect-\[16\/10\] { aspect-ratio: 16/10; }
-.aspect-\[4\/3\] { aspect-ratio: 4/3; }
-.aspect-\[1\/1\] { aspect-ratio: 1/1; }
+.porsche-page {
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+}
 
-/* Desktop Language Switcher an Theme-Toggle angepasst: weißer Hintergrund, keine Pfeil-UI, rund */
-.lang-switch {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: none;
-  width: 40px;
-  height: 40px;
+.porsche-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+  border: none;
+}
+
+.transparent-header {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.porsche-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.9rem 0;
+}
+
+.porsche-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.brand-mark {
+  width: 18px;
+  height: 18px;
   background: #ffffff;
-  color: #0c0a09; /* near stone-950 */
-  border: 1px solid #e5e7eb; /* slate-200 */
-  border-radius: 0.75rem; /* fully rounded */
-  padding: 0;
-  text-align: center;
-  line-height: 40px; /* vertically center the 2-letter code */
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+.transparent-header .brand-mark {
+  color: #ffffff;
+}
+
+.porsche-nav {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-item {
   font-weight: 600;
-  font-size: 12px;
+  color: #0f172a;
+  text-decoration: none;
+  position: relative;
+  padding: 0.35rem 0;
+}
+
+.dark .nav-item {
+  color: #e5e7eb;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -6px 0;
+  height: 2px;
+  background: rgb(var(--accent));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.nav-admin {
+  padding-inline: 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.35);
+}
+
+.dark .nav-admin {
+  background: #0b1220;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+}
+
+.porsche-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.lang-toggle {
+  min-width: 64px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.discovery-link {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: 700;
   letter-spacing: 0.02em;
-  cursor: pointer;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 }
-.lang-switch:focus {
-  outline: 2px solid #94a3b8; /* slate-400 */
-  outline-offset: 2px;
+
+.dark .action-btn,
+.dark .lang-switch {
+  background: #0b1220;
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.08);
 }
-/* hide old IE arrow */
-.lang-switch::-ms-expand { display: none; }
-/* options keep dark text so contrast on white */
-.lang-switch option { color: #0c0a09; }
-/* Keep it white in dark mode as requested */
-@media (prefers-color-scheme: dark) {
-  .lang-switch {
-    background: #ffffff;
-    color: #0c0a09;
-    border-color: #e5e7eb;
+
+.mobile-drawer {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.dark .mobile-drawer {
+  background: rgba(15, 23, 42, 0.95);
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.drawer-link {
+  display: block;
+  padding: 0.75rem 0;
+  font-weight: 600;
+  color: #0f172a;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .drawer-link {
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.porsche-hero {
+  position: relative;
+  min-height: 85vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(31, 45, 52, 0.88), rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #f8fafc;
+  padding: 4rem 1.25rem;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), transparent);
+}
+
+.hero-headline {
+  font-size: clamp(2.8rem, 4vw + 1rem, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+.headline-letter {
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(8px);
+}
+
+.headline-letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.letter-strong {
+  font-weight: 800;
+  font-style: normal;
+}
+
+.letter-italic {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.hero-copy {
+  max-width: 640px;
+  font-size: 1.1rem;
+  color: rgba(248, 250, 252, 0.85);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.porsche-section {
+  padding: 4rem 0;
+}
+
+.porsche-stage {
+  padding: 3.5rem 0 2rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f4 100%);
+}
+
+.dark .porsche-stage {
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+}
+
+.section-head {
+  max-width: 720px;
+}
+
+.section-kicker {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8c8c8c;
+}
+
+.dark .section-kicker {
+  color: #94a3b8;
+}
+
+.section-sub {
+  color: #4b5563;
+  margin-top: 0.65rem;
+}
+
+.accent-bar {
+  width: 64px;
+  height: 3px;
+  background: rgb(var(--accent));
+  margin-bottom: 0.75rem;
+}
+
+.stage-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.stage-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 260px;
+  isolation: isolate;
+  box-shadow: 0 24px 48px -36px rgba(0, 0, 0, 0.5);
+}
+
+.stage-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.stage-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.55) 100%);
+  color: #fff;
+  display: grid;
+  gap: 0.35rem;
+  align-content: flex-end;
+  padding: 1.5rem;
+}
+
+.stage-kicker {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.stage-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.stage-copy {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.tile-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.porsche-tile {
+  background: rgb(var(--card));
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px -28px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .porsche-tile {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 48px -32px rgba(0, 0, 0, 0.6);
+}
+
+.tile-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.tile-body {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.tile-label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.tile-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dark .tile-title {
+  color: #e5e7eb;
+}
+
+.tile-copy {
+  color: #4b5563;
+}
+
+.tile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: rgb(var(--accent));
+  margin-top: 0.35rem;
+}
+
+.contact-section {
+  background: linear-gradient(180deg, #f7f7f7 0%, #ededed 100%);
+}
+
+.dark .contact-section {
+  background: linear-gradient(180deg, #05080c 0%, #0b1220 100%);
+}
+
+.contact-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: start;
+}
+
+.contact-card {
+  background: rgb(var(--card));
+  box-shadow: 0 24px 48px -32px rgba(0, 0, 0, 0.25);
+}
+
+.input-label {
+  font-size: 0.9rem;
+  color: #111827;
+}
+
+.form-error {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #dc2626;
+}
+
+.privacy-note {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.alert {
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.alert-error {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+  border: 1px solid rgba(220, 38, 38, 0.35);
+}
+
+.footer-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .footer-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
-/* ensure white in app dark mode too */
-:global(.dark) .lang-switch,
-.dark .lang-switch {
-  background: #ffffff;
-  color: #0c0a09;
-  border-color: #e5e7eb;
+
+.section-sub,
+.tile-copy,
+.privacy-note {
+  color: #4b5563;
+}
+
+.dark .section-sub,
+.dark .tile-copy,
+.dark .privacy-note {
+  color: #cbd5e1;
+}
+
+.slogan-fade-enter-active,
+.slogan-fade-leave-active {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slogan-fade-enter-from,
+.slogan-fade-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+@media (max-width: 768px) {
+  .porsche-bar {
+    grid-template-columns: 1fr auto;
+  }
+  .porsche-nav {
+    display: none;
+  }
+  .hero-headline {
+    font-size: clamp(2.2rem, 6vw + 1rem, 3.4rem);
+  }
+  .hero-overlay {
+    min-height: 70vh;
+  }
 }
 </style>

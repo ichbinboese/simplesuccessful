@@ -1,17 +1,12 @@
 {
   "nav": {
-    "about": "About",
-    "coaching": "Coaching",
-    "programs": "Programs",
-    "contact": "Contact",
     "language": "Language"
   },
   "cta": {
     "discovery_call": "Discovery Call",
     "get_started": "Get started",
     "start": "Start",
-    "collaborate": "Collaborate",
-      "admin_area": "Login"
+    "admin_area": "Login"
   },
   "aria": {
     "toggle_dark": "Toggle dark mode",
@@ -20,82 +15,15 @@
   "mobile": {
     "theme": "Theme"
   },
-  "badges": {
-    "performance": "Performance",
-    "mindset": "Mindset",
-    "aesthetics": "Aesthetics",
-    "routines": "Routines",
-    "clarity": "Clarity",
-    "energy": "Energy",
-    "structure": "Structure",
-    "popular": "Popular"
-  },
   "hero": {
-    "title": "Dr. Simple – Lifestyle Coach & Entrepreneur",
-    "subtitle": "Sustainable energy, clear systems and an aesthetic everyday life. Dr Simple helps you make lifestyle & business simple.",
-    "primary": "Free discovery call",
-    "secondary": "About Dr Simple",
-    "card_title": "Clarity. Energy. Results.",
-    "card_text": "Structure over hype: sleep, movement, nutrition and business habits – simple, measurable, actionable.",
-    "image_alt": "Modern workspace setup"
-  },
-  "about": {
-    "title": "Dr Simple: Live and work well, simply",
-    "text": "I'm Alexander Kahlsdorf. I help entrepreneurs and executives align everyday design, energy and output – without burnout, without perfectionism.",
-    "image_alt": "Alexander – placeholder portrait",
-    "items": {
-      "routine_title": "Routine design",
-      "routine_text": "Morning/Evening flow, deep work, regeneration",
-      "business_title": "Business health",
-      "business_text": "Decision systems, delegation, meeting design",
-      "body_title": "Body & mind",
-      "body_text": "Sleep, nutrition, training, mental models",
-      "aesthetic_title": "Aesthetics",
-      "aesthetic_text": "Space, style, minimalism, clarity"
-    }
-  },
-  "pillars": {
-    "title": "The 4 pillars",
-    "subtitle": "A system that lasts – pragmatic and measurable.",
-    "cards": {
-      "clarity_title": "Vision & priorities",
-      "clarity_text": "Define what really matters. Set boundaries. Eliminate noise.",
-      "energy_title": "Sleep, nutrition, training",
-      "energy_text": "Micro habits for stable energy throughout the day.",
-      "structure_title": "Deep work & systems",
-      "structure_text": "Calendar as strategy: focus blocks, review, delegation.",
-      "aesthetics_title": "Environment & style",
-      "aesthetics_text": "Minimalist setup that boosts output and well-being."
-    }
+    "subtitle": "Success is simple – when you decide."
   },
   "programs": {
-    "title": "Programs",
-    "subtitle": "Choose your pace – clear results in 30, 60 or 90 days.",
-    "starter_title": "Starter (30 days)",
-    "starter_text": "Audit, target picture, first routines. Perfect to get started.",
-    "starter_list": {
-      "item1": "1:1 kickoff + plan",
-      "item2": "Weekly check‑ins",
-      "item3": "Template bundle"
-    },
-    "starter_cta": "Request",
-    "momentum_badge": "Popular",
-    "momentum_title": "Momentum (60 days)",
-    "momentum_text": "Solidify routines, increase energy, sharpen focus.",
-    "momentum_list": {
-      "item1": "1:1 coaching every 2 weeks",
-      "item2": "Tracking & review",
-      "item3": "Chat support"
-    },
-    "momentum_cta": "Reserve a spot",
-    "leadership_title": "Leadership (90 days)",
-    "leadership_text": "Performance system for entrepreneurs & executives.",
-    "leadership_list": {
-      "item1": "Weekly 1:1 deep dives",
-      "item2": "Team & meeting design",
-      "item3": "Individual lifestyle plan"
-    },
-    "leadership_cta": "Book a consult",
+    "title": "Videos",
+    "subtitle": "Choose your success.",
+    "starter_text": "Additional income through things we already do every day.",
+    "momentum_text": "The opportunity of your life!",
+    "leadership_text": "Networking powered by direct sales.",
     "watch_marketing": "Watch marketing video",
     "watch_explain": "Watch explain video",
     "watch_product": "Watch product video",
@@ -106,10 +34,9 @@
     }
   },
   "videos": {
-    "title": "Videos",
-    "marketing": { "title": "Marketing Video" },
-    "explain": { "title": "Marketing Explain Video" },
-    "product": { "title": "Product Video" },
+    "marketing": { "title": "Concept – Direct Sales" },
+    "explain": { "title": "Career – Network Marketing" },
+    "product": { "title": "Products" },
     "back": "Back to home",
     "aria": { "label": "Video player" },
     "lock": {
@@ -121,23 +48,6 @@
       "remember": "Remember on this device"
     }
   },
-  "feed": {
-    "title": "Insights",
-    "subtitle": "Everyday life, training and entrepreneur life – authentic snippets.",
-    "cta": "Collaborate",
-    "images": {
-      "gym_alt": "Gym",
-      "workspace_alt": "Workspace",
-      "coffee_alt": "Coffee",
-      "team_alt": "Team"
-    }
-  },
-  "testimonials": {
-    "quote1": "Dr Simple gave structure to my everyday life – more energy and better decisions.",
-    "author1": "Sophia R., Founder",
-    "quote2": "The mix of clarity, style and systems fits – results instead of hype.",
-    "author2": "Daniel K., Executive"
-  },
   "contact": {
     "title": "Book a discovery call",
     "subtitle": "Tell me briefly where you stand – I'll get back to you soon.",
@@ -146,6 +56,8 @@
       "name_placeholder": "First and last name",
       "email_label": "Email",
       "email_placeholder": "you@mail.com",
+      "phone_label": "Mobile phone",
+      "phone_placeholder": "e.g. +49 170 1234567",
       "goal_label": "Goal",
       "goal_placeholder": "Where do you want to be in 90 days?",
       "privacy_note": "No spam. GDPR compliant.",
@@ -156,6 +68,8 @@
       "error_name_required": "Please enter your name.",
       "error_email_required": "Please enter your email.",
       "error_email_invalid": "Please enter a valid email address.",
+      "error_phone_required": "Please enter your mobile number.",
+      "error_phone_invalid": "Please enter a valid mobile number.",
       "error_goal_required": "Please tell me briefly about your goal."
     }
   },
@@ -163,16 +77,16 @@
     "imprint": "Imprint",
     "privacy": "Privacy",
     "contact": "Contact",
-    "copyright": "© {year} Dr Simple · Alexander Kahlsdorf"
+    "copyright": "© {year} Simple Success · Alexander Kahlsdorf"
   },
   "legal": {
     "imprint": {
       "title": "Imprint",
-      "content": "<p><strong>Provider Information</strong></p><p>Dr Simple · Alexander Kahlsdorf<br>Example Street 1<br>10115 Berlin<br>Germany</p><p>Email: info@drsimple.example</p><p>VAT ID: DE123456789</p><p><em>Note:</em> Placeholder content. Replace with your legal details.</p>"
+      "content": "<p><strong>Provider Information</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Example Street 1<br>10115 Berlin<br>Germany</p><p>Email: info@drsimple.example</p><p>VAT ID: DE123456789</p><p><em>Note:</em> Placeholder content. Replace with your legal details.</p>"
     },
     "privacy": {
       "title": "Privacy Policy",
-      "content": "<p>We take your privacy seriously. This site only uses the minimum necessary technologies.</p><h4>Controller</h4><p>Dr Simple · Alexander Kahlsdorf</p><h4>Contact</h4><p>info@drsimple.example</p><h4>Note</h4><p>This is placeholder content. Replace with your full GDPR-compliant privacy policy.</p>"
+      "content": "<p>We take your privacy seriously. This site only uses the minimum necessary technologies.</p><h4>Controller</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contact</h4><p>info@drsimple.example</p><h4>Note</h4><p>This is placeholder content. Replace with your full GDPR-compliant privacy policy.</p>"
     },
     "close": "Close"
   }
