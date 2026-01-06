@@ -26,13 +26,25 @@
       <div class="hero-gradient"></div>
       <div class="hero-overlay container-prose">
         <h1 class="hero-headline">
-          <span
-            v-for="(letter, idx) in animatedLetters"
-            :key="idx"
-            class="headline-letter"
-            :class="[{ visible: letter.visible }, letter.part === 'bold' ? 'letter-strong' : 'letter-italic']"
-          >
-            {{ letter.char === ' ' ? '\u00a0' : letter.char }}
+          <span class="headline-group">
+            <span
+              v-for="(letter, idx) in heroBoldLetters"
+              :key="`hero-bold-${idx}`"
+              class="headline-letter letter-strong"
+              :class="{ visible: letter.visible }"
+            >
+              {{ letter.char === ' ' ? '\u00a0' : letter.char }}
+            </span>
+          </span><!--
+       --><span class="headline-group">
+            <span
+              v-for="(letter, idx) in heroItalicLetters"
+              :key="`hero-italic-${idx}`"
+              class="headline-letter letter-italic"
+              :class="{ visible: letter.visible }"
+            >
+              {{ letter.char === ' ' ? '\u00a0' : letter.char }}
+            </span>
           </span>
         </h1>
         <button
@@ -85,6 +97,7 @@
         </div>
       </div>
     </section>
+
     <section class="product-section product-criteria">
       <div class="container-prose network-inner">
         <div class="section-head">
@@ -120,6 +133,43 @@
         </div>
       </div>
     </section>
+
+    <section class="future-section">
+      <div class="container-prose future-inner">
+        <div class="section-head">
+          <h2 class="h2">{{ $t('sections.future.title') }}</h2>
+        </div>
+        <div class="future-content">
+          <div class="future-block">
+            <p class="future-copy keep-dark">{{ $t('sections.future.p1') }}</p>
+            <p class="future-copy keep-dark">{{ $t('sections.future.p2') }}</p>
+            <p class="future-copy keep-dark">{{ $t('sections.future.p3') }}</p>
+            <ul class="future-list keep-dark">
+              <li v-for="(item, idx) in futureList1" :key="`f1-${idx}`">{{ item }}</li>
+            </ul>
+          </div>
+
+          <div class="future-block">
+            <p class="future-copy keep-dark">{{ $t('sections.future.p4') }}</p>
+            <p class="future-copy keep-dark">{{ $t('sections.future.p5') }}</p>
+            <ul class="future-list keep-dark">
+              <li v-for="(item, idx) in futureList2" :key="`f2-${idx}`">{{ item }}</li>
+            </ul>
+          </div>
+
+          <div class="future-block">
+            <p class="future-copy keep-dark">
+              {{ $t('sections.future.p6') }}
+            </p>
+            <p class="future-copy keep-dark">{{ $t('sections.future.p7') }}</p>
+            <ul class="future-list keep-dark">
+              <li v-for="(item, idx) in futureList3" :key="`f3-${idx}`">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="theory-section">
       <div class="container-prose network-inner">
         <div class="section-head">
@@ -169,41 +219,8 @@
         </div>
       </div>
     </section>
-    <section class="future-section">
-      <div class="container-prose future-inner">
-        <div class="section-head">
-          <h2 class="h2">{{ $t('sections.future.title') }}</h2>
-        </div>
-        <div class="future-content">
-          <div class="future-block">
-            <p class="future-copy keep-dark">{{ $t('sections.future.p1') }}</p>
-            <p class="future-copy keep-dark">{{ $t('sections.future.p2') }}</p>
-            <p class="future-copy keep-dark">{{ $t('sections.future.p3') }}</p>
-            <ul class="future-list keep-dark">
-              <li v-for="(item, idx) in futureList1" :key="`f1-${idx}`">{{ item }}</li>
-            </ul>
-          </div>
 
-          <div class="future-block">
-            <p class="future-copy keep-dark">{{ $t('sections.future.p4') }}</p>
-            <p class="future-copy keep-dark">{{ $t('sections.future.p5') }}</p>
-            <ul class="future-list keep-dark">
-              <li v-for="(item, idx) in futureList2" :key="`f2-${idx}`">{{ item }}</li>
-            </ul>
-          </div>
-
-          <div class="future-block">
-            <p class="future-copy keep-dark">
-              {{ $t('sections.future.p6') }}
-            </p>
-            <p class="future-copy keep-dark">{{ $t('sections.future.p7') }}</p>
-            <ul class="future-list keep-dark">
-              <li v-for="(item, idx) in futureList3" :key="`f3-${idx}`">{{ item }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="cup-banner" :style="{ backgroundImage: `url(${heroPoster})` }" aria-hidden="true"></section>
 
     <section id="kontakt" class="simpsucc-section contact-section">
       <div class="container-prose contact-grid">
@@ -317,19 +334,22 @@ import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import Modal from '@/components/Modal.vue'
 
-import heroPoster from '@/images/bilder/pexels-daniel-andraski-197681005-13716061.jpg'
-import shotMarketing from '@/images/bilder/pexels-drew-williams-1285451-3439481.jpg'
-import shotExplain from '@/images/bilder/pexels-luna-lovegood-4087182.jpg'
-import shotProduct from '@/images/bilder/pexels-anna-nekrashevich-6203311.jpg'
-import shotWorkshop from '@/images/bilder/pexels-thirdman-8470839.jpg'
-import shotLifestyle from '@/images/bilder/pexels-arina-krasnikova-5712085.jpg'
-import shotNight from '@/images/bilder/pexels-vladbagacian-1228396.edited.jpg'
-import shotCup from '@/images/bilder/stock.cup.edited.png'
+import heroPoster from '@/images/bilder/simpcup.png'
+import shotMarketing from '@/images/bilder/directsales.jpg'
+import shotExplain from '@/images/bilder/career.jpg'
+import shotProduct from '@/images/bilder/products.jpg'
+import shotWorkshop from '@/images/bilder/coaching.jpg'
+import shotLifestyle from '@/images/bilder/running.jpg'
+import shotNight from '@/images/bilder/running.jpg'
+import shotCup from '@/images/bilder/planning.jpg'
 
 const heroVideo = '/build/videos/Video.Header.Simple.Successful.mp4'
 
 const isDark = ref(false)
 const animatedLetters = ref([])
+const heroSplitIndex = ref(0)
+const heroBoldLetters = computed(() => animatedLetters.value.slice(0, heroSplitIndex.value))
+const heroItalicLetters = computed(() => animatedLetters.value.slice(heroSplitIndex.value))
 const letterTimers = []
 let letterCycle = null
 const videoSectionRefs = ref([])
@@ -384,6 +404,7 @@ function startLetterReveal () {
   const phrase = currentHeroPhrase.value || ''
   const firstDot = phrase.indexOf('.')
   const splitIdx = firstDot >= 0 ? firstDot + 1 : phrase.length
+  heroSplitIndex.value = splitIdx
   const boldPart = phrase.slice(0, splitIdx)
   const italicPart = phrase.slice(splitIdx)
   const baseLetters = [
@@ -954,14 +975,28 @@ async function submitContact () {
 
 .hero-headline {
   font-size: clamp(3.2rem, 4vw + 1.15rem, 5.3rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  font-weight: 400;
+  text-transform: uppercase;
   text-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+}
+
+.headline-group {
+  display: inline;
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  font-weight: 400;
 }
 
 .hero-video-toggle {
@@ -1060,7 +1095,7 @@ async function submitContact () {
   max-width: 860px;
   font-size: clamp(1.25rem, 2vw + 0.5rem, 1.6rem);
   line-height: 1.55;
-  font-weight: 500;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -1146,7 +1181,7 @@ async function submitContact () {
   margin: 0;
   display: grid;
   gap: 0.35rem;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.02rem;
   color: #000;
 }
@@ -1277,7 +1312,7 @@ async function submitContact () {
 .network-aside-text {
   font-size: 1rem;
   line-height: 1.6;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.01em;
   color: inherit;
 }
@@ -1287,7 +1322,7 @@ async function submitContact () {
   padding-left: 1.2rem;
   display: grid;
   gap: 0.35rem;
-  font-weight: 600;
+  font-weight: 400;
   color: inherit;
 }
 
@@ -1317,6 +1352,14 @@ async function submitContact () {
   padding: 3.5rem 0;
 }
 
+.cup-banner {
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
 .future-inner {
   display: grid;
   gap: 1.5rem;
@@ -1339,7 +1382,7 @@ async function submitContact () {
   margin: 0;
   display: grid;
   gap: 0.35rem;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.02rem;
   color: #fff;
 }
@@ -1358,7 +1401,7 @@ async function submitContact () {
 .network-grid {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 0.5fr));
 }
 
 .network-card {
@@ -1388,7 +1431,7 @@ async function submitContact () {
 .network-media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
 }
 
 .network-media img {
@@ -1453,7 +1496,7 @@ async function submitContact () {
 
 .network-title {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -1620,7 +1663,7 @@ async function submitContact () {
 .section-kicker {
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
   color: #8c8c8c;
 }
 
@@ -1670,14 +1713,14 @@ async function submitContact () {
 .stage-kicker {
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.8rem;
   opacity: 0.9;
 }
 
 .stage-title {
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
@@ -1724,12 +1767,12 @@ async function submitContact () {
   text-transform: uppercase;
   font-size: 0.75rem;
   color: #6b7280;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .tile-title {
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #000;
 }
 
@@ -1745,7 +1788,7 @@ async function submitContact () {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 700;
+  font-weight: 400;
   color: rgb(var(--accent));
   margin-top: 0.35rem;
 }
