@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}Onepager{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+  {% block meta %}{% endblock %}
   {{ encore_entry_link_tags('app') }}
   {% block styles %}{% endblock %}
 </head>

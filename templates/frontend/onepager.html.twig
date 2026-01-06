@@ -2,6 +2,25 @@
 
 {% block title %}Startseite{% endblock %}
 
+{% block meta %}
+  {% set canonical = app.request.schemeAndHttpHost ~ app.request.getPathInfo %}
+  <link rel="canonical" href="{{ canonical }}" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Mit einem smarten digitalen Geschäftsmodell zu mehr finanzieller, zeitlicher und örtlicher Freiheit. Keine Investition, flexibel von zuhause – Schritt für Schritt zum Erfolg." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Simple Success – Network Marketing & digitale Freiheit" />
+  <meta property="og:description" content="Erfahre, wie du mit einem smarten, digitalen Geschäftsmodell Schritt für Schritt ein zusätzliches Einkommen aufbaust – unabhängig von Erfahrung oder Startkapital." />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:image" content="{{ asset('build/images/pexels-daniel-andraski-197681005-13716061.jpg') }}" />
+  <meta property="og:locale" content="{{ app.request.locale|replace({'-':'_'})|lower }}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Simple Success – Network Marketing & digitale Freiheit" />
+  <meta name="twitter:description" content="Mit dem Geschäftsmodell des 21. Jahrhunderts zu mehr Freiheit – starte jetzt dein eigenes Erfolgskonzept." />
+  <meta name="twitter:image" content="{{ asset('build/images/pexels-daniel-andraski-197681005-13716061.jpg') }}" />
+{% endblock %}
+
 {% block body %}
   <script>
     window.APP_LOCALE = '{{ app.request.locale|e('js') }}';

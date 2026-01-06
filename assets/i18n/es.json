@@ -16,6 +16,7 @@
     "theme": "Tema"
   },
   "hero": {
+    "phrase": "SENCILLO. EXITOSO.",
     "subtitle": "El éxito es simple cuando decides."
   },
   "programs": {
@@ -55,7 +56,7 @@
       "name_label": "Nombre",
       "name_placeholder": "Nombre y apellido",
       "email_label": "Correo electrónico",
-      "email_placeholder": "tu@mail.com",
+      "email_placeholder": "tu [at] mail.com",
       "phone_label": "Número de móvil",
       "phone_placeholder": "p. ej. +49 170 1234567",
       "goal_label": "Objetivo",
@@ -82,12 +83,83 @@
   "legal": {
     "imprint": {
       "title": "Aviso legal",
-      "content": "<p><strong>Información del proveedor</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Calle Ejemplo 1<br>10115 Berlín<br>Alemania</p><p>Email: info@drsimple.example</p><p>IVA: DE123456789</p><p><em>Nota:</em> Contenido de marcador de posición. Sustituir por sus datos legales.</p>"
+      "content": "<p><strong>Información del proveedor</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Calle Ejemplo 1<br>10115 Berlín<br>Alemania</p><p>Email: Kahlsdorf@icloud.com</p><p>IVA: DE123456789</p><p><em>Nota:</em> Contenido de marcador de posición. Sustituir por sus datos legales.</p>"
     },
     "privacy": {
       "title": "Política de privacidad",
-      "content": "<p>Nos tomamos muy en serio su privacidad. Este sitio solo utiliza las tecnologías mínimas necesarias.</p><h4>Responsable</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contacto</h4><p>info@drsimple.example</p><h4>Nota</h4><p>Contenido de marcador de posición. Sustituir por su política de privacidad conforme al RGPD.</p>"
+      "content": "<p>Nos tomamos muy en serio su privacidad. Este sitio solo utiliza las tecnologías mínimas necesarias.</p><h4>Responsable</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contacto</h4><p>Kahlsdorf@icloud.com</p><h4>Nota</h4><p>Contenido de marcador de posición. Sustituir por su política de privacidad conforme al RGPD.</p>"
     },
     "close": "Cerrar"
+  },
+  "sections": {
+    "common": {
+      "video": ""
+    },
+    "intro": {
+      "lead": "CON EL MODELO DE NEGOCIO DEL SIGLO XXI HACIA MÁS LIBERTAD FINANCIERA, DE TIEMPO Y LUGAR.",
+      "body": "Sin inversión. Sin experiencia previa. Flexible desde casa."
+    },
+    "network": {
+      "title": "¿QUÉ ES EL NETWORK MARKETING?",
+      "aside": "¿ALGUNA VEZ HAS PEDIDO UNA RECOMENDACIÓN O TÚ MISMO HAS RECOMENDADO ALGO?",
+      "cards": {
+        "direct": "CONCEPTO DE VENTA DIRECTA",
+        "direct_alt": "Video: Concepto de venta directa",
+        "career": "OPORTUNIDAD DE CARRERA",
+        "career_alt": "Video: Oportunidad de carrera"
+      }
+    },
+    "products": {
+      "title": "¿QUÉ PRODUCTOS SON ADECUADOS?",
+      "cardTitle": "Ver video de producto",
+      "cardAlt": "Video: Presentación del producto",
+      "prereq": "CONDICIÓN BÁSICA: CREO AL 100 % EN MIS PRODUCTOS, LOS AMO Y LOS VIVO.",
+      "optimal": "ES IDEAL CUANDO LOS PRODUCTOS",
+      "bullets": [
+        "ESTÁN EN UN MERCADO EN CRECIMIENTO",
+        "NO ESTÁN DISPONIBLES EN EL COMERCIO MINORISTA CLÁSICO",
+        "INTERESAN A UN PÚBLICO OBJETIVO LO MÁS AMPLIO POSIBLE"
+      ]
+    },
+    "theory": {
+      "title": "DE LA TEORÍA A LA PRÁCTICA",
+      "cardTitle": "Plan to Action",
+      "cardAlt": "Video: Plan to Action"
+    },
+    "effectiveness": {
+      "title": "LLEGAR MÁS RÁPIDO A TU META CON MÁS EFECTIVIDAD",
+      "cards": {
+        "run90": "90 DAY RUN",
+        "run90_alt": "Video: 90 Day Run",
+        "coaching": "PRIVATE COACHING",
+        "coaching_alt": "Video: Private Coaching"
+      }
+    },
+    "future": {
+      "title": "¿POR QUÉ EL NETWORK MARKETING ES EL FUTURO?",
+      "p1": "El mundo laboral cambia rápidamente, sobre todo por la digitalización y la inteligencia artificial. Muchas tareas se automatizan y profesiones completas cambian o desaparecen.",
+      "p2": "Cuando más personas compiten por menos empleos, el trabajo se vuelve intercambiable: los salarios se estancan, la seguridad baja y las oportunidades reales de desarrollo son más escasas.",
+      "p3": "Muchos ya lo sienten hoy:",
+      "list1": [
+        "→ Menos tiempo a pesar de más rendimiento",
+        "→ Menos dinero a pesar del aumento de costes",
+        "→ Menos libertad por la dependencia"
+      ],
+      "p4": "Al mismo tiempo surgen nuevas oportunidades",
+      "p5": "Nunca ha sido tan fácil trabajar de forma digital y desde cualquier lugar:",
+      "list2": [
+        "→ Trabajar cuando y donde quieras",
+        "→ Crecer a nivel mundial y no solo local",
+        "→ Bajos costes fijos en lugar de grandes obligaciones"
+      ],
+      "p6": "El network marketing combina estas oportunidades con lo que la gente busca hoy: más tiempo, más ingresos y más independencia.",
+      "p7": "Construyes algo propio:",
+      "list3": [
+        "→ Sin capital inicial",
+        "→ Con un sistema probado",
+        "→ Sin conocimientos previos",
+        "→ Flexible, digital y escalable"
+      ]
+    }
   }
 }

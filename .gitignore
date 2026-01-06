@@ -17,6 +17,7 @@
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
+/assets/videos/*
 ###< symfony/asset-mapper ###
 
 ###> symfony/webpack-encore-bundle ###

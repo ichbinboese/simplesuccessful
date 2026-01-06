@@ -16,6 +16,7 @@
     "theme": "Theme"
   },
   "hero": {
+    "phrase": "SIMPLE. SUCCESSFUL.",
     "subtitle": "Success is simple – when you decide."
   },
   "programs": {
@@ -55,7 +56,7 @@
       "name_label": "Name",
       "name_placeholder": "First and last name",
       "email_label": "Email",
-      "email_placeholder": "you@mail.com",
+      "email_placeholder": "you [at] mail.com",
       "phone_label": "Mobile phone",
       "phone_placeholder": "e.g. +49 170 1234567",
       "goal_label": "Goal",
@@ -82,12 +83,83 @@
   "legal": {
     "imprint": {
       "title": "Imprint",
-      "content": "<p><strong>Provider Information</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Example Street 1<br>10115 Berlin<br>Germany</p><p>Email: info@drsimple.example</p><p>VAT ID: DE123456789</p><p><em>Note:</em> Placeholder content. Replace with your legal details.</p>"
+      "content": "<p><strong>Provider Information</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Example Street 1<br>10115 Berlin<br>Germany</p><p>Email: Kahlsdorf@icloud.com</p><p>VAT ID: DE123456789</p><p><em>Note:</em> Placeholder content. Replace with your legal details.</p>"
     },
     "privacy": {
       "title": "Privacy Policy",
-      "content": "<p>We take your privacy seriously. This site only uses the minimum necessary technologies.</p><h4>Controller</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contact</h4><p>info@drsimple.example</p><h4>Note</h4><p>This is placeholder content. Replace with your full GDPR-compliant privacy policy.</p>"
+      "content": "<p>We take your privacy seriously. This site only uses the minimum necessary technologies.</p><h4>Controller</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contact</h4><p>Kahlsdorf@icloud.com</p><h4>Note</h4><p>This is placeholder content. Replace with your full GDPR-compliant privacy policy.</p>"
     },
     "close": "Close"
+  },
+  "sections": {
+    "common": {
+      "video": ""
+    },
+    "intro": {
+      "lead": "WITH THE 21ST-CENTURY BUSINESS MODEL TO MORE FINANCIAL, TIME AND LOCATION FREEDOM.",
+      "body": "No investment. No prior experience. Flexible from home."
+    },
+    "network": {
+      "title": "WHAT IS NETWORK MARKETING?",
+      "aside": "HAVE YOU EVER ASKED FOR A RECOMMENDATION OR PASSED ONE ON YOURSELF?",
+      "cards": {
+        "direct": "DIRECT SALES CONCEPT",
+        "direct_alt": "Video: Direct Sales Concept",
+        "career": "CAREER OPPORTUNITY",
+        "career_alt": "Video: Career Opportunity"
+      }
+    },
+    "products": {
+      "title": "WHICH PRODUCTS ARE A GOOD FIT?",
+      "cardTitle": "Watch product video",
+      "cardAlt": "Video: Product overview",
+      "prereq": "REQUIREMENT: I STAND 100% BEHIND MY PRODUCTS, I LOVE AND LIVE THEM!",
+      "optimal": "IT'S IDEAL WHEN THE PRODUCTS",
+      "bullets": [
+        "ARE IN A GROWTH MARKET",
+        "ARE NOT AVAILABLE IN TRADITIONAL RETAIL",
+        "APPEAL TO THE WIDEST POSSIBLE AUDIENCE"
+      ]
+    },
+    "theory": {
+      "title": "FROM THEORY TO PRACTICE",
+      "cardTitle": "Plan to Action",
+      "cardAlt": "Video: Plan to Action"
+    },
+    "effectiveness": {
+      "title": "FASTER TO YOUR GOAL WITH MORE EFFECTIVENESS",
+      "cards": {
+        "run90": "90 DAY RUN",
+        "run90_alt": "Video: 90 Day Run",
+        "coaching": "PRIVATE COACHING",
+        "coaching_alt": "Video: Private Coaching"
+      }
+    },
+    "future": {
+      "title": "WHY IS NETWORK MARKETING THE FUTURE?",
+      "p1": "The world of work is changing rapidly – especially through digitalization and artificial intelligence. Many tasks are automated, entire job profiles change or disappear.",
+      "p2": "When more people compete for fewer jobs, work becomes interchangeable: wages stagnate, security drops, and real development opportunities become rarer.",
+      "p3": "Many already feel it today:",
+      "list1": [
+        "→ Less time despite more performance",
+        "→ Less money despite rising costs",
+        "→ Less freedom through dependence"
+      ],
+      "p4": "At the same time, new opportunities arise",
+      "p5": "It has never been easier to work digitally and remotely:",
+      "list2": [
+        "→ Work when and where you want",
+        "→ Grow worldwide instead of only locally",
+        "→ Low fixed costs instead of high obligations"
+      ],
+      "p6": "Network marketing combines these opportunities with what people really want today: more time, more income, and more independence.",
+      "p7": "You build something of your own:",
+      "list3": [
+        "→ Without start-up capital",
+        "→ With a proven system",
+        "→ Without prior knowledge",
+        "→ Flexible, digital, and scalable"
+      ]
+    }
   }
 }

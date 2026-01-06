@@ -55,7 +55,7 @@
       "name_label": "Nom",
       "name_placeholder": "Prénom et nom",
       "email_label": "E‑mail",
-      "email_placeholder": "vous@mail.com",
+      "email_placeholder": "vous [at] mail.com",
       "phone_label": "Numéro de portable",
       "phone_placeholder": "ex. +49 170 1234567",
       "goal_label": "Objectif",
@@ -82,12 +82,83 @@
   "legal": {
     "imprint": {
       "title": "Mentions légales",
-      "content": "<p><strong>Informations légales</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Rue Exemple 1<br>10115 Berlin<br>Allemagne</p><p>E‑mail : info@drsimple.example</p><p>TVA : DE123456789</p><p><em>Note :</em> Contenu de remplacement. Veuillez insérer vos informations légales.</p>"
+      "content": "<p><strong>Informations légales</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Rue Exemple 1<br>10115 Berlin<br>Allemagne</p><p>E‑mail : Kahlsdorf@icloud.com</p><p>TVA : DE123456789</p><p><em>Note :</em> Contenu de remplacement. Veuillez insérer vos informations légales.</p>"
     },
     "privacy": {
       "title": "Politique de confidentialité",
-      "content": "<p>Nous prenons votre vie privée au sérieux. Ce site n’utilise que les technologies strictement nécessaires.</p><h4>Responsable</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contact</h4><p>info@drsimple.example</p><h4>Note</h4><p>Contenu de remplacement. Remplacez par votre politique de confidentialité conforme au RGPD.</p>"
+      "content": "<p>Nous prenons votre vie privée au sérieux. Ce site n’utilise que les technologies strictement nécessaires.</p><h4>Responsable</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Contact</h4><p>Kahlsdorf@icloud.com</p><h4>Note</h4><p>Contenu de remplacement. Remplacez par votre politique de confidentialité conforme au RGPD.</p>"
     },
     "close": "Fermer"
+  },
+  "sections": {
+    "common": {
+      "video": ""
+    },
+    "intro": {
+      "lead": "AVEC LE MODÈLE D’AFFAIRES DU XXIe SIÈCLE VERS PLUS DE LIBERTÉ FINANCIÈRE, TEMPORELLE ET GÉOGRAPHIQUE.",
+      "body": "AUCUN INVESTISSEMENT. SANS EXPÉRIENCE PRÉALABLE. FLEXIBLE DEPUIS LA MAISON."
+    },
+    "network": {
+      "title": "QU’EST-CE QUE LE MARKETING DE RÉSEAU ?",
+      "aside": "AS-TU DÉJÀ DEMANDÉ UNE RECOMMANDATION OU TOI-MÊME RECOMMANDÉ QUELQUE CHOSE ?",
+      "cards": {
+        "direct": "CONCEPT VENTE DIRECTE",
+        "direct_alt": "Vidéo : Concept vente directe",
+        "career": "OPPORTUNITÉ DE CARRIÈRE",
+        "career_alt": "Vidéo : Opportunité de carrière"
+      }
+    },
+    "products": {
+      "title": "QUELS PRODUITS CONVIENNENT ?",
+      "cardTitle": "Voir la vidéo produit",
+      "cardAlt": "Vidéo : Présentation produit",
+      "prereq": "CONDITION DE BASE : JE SOUTIENS À 100 % MES PRODUITS, JE LES AIME ET JE LES VIS.",
+      "optimal": "C’EST IDÉAL LORSQUE LES PRODUITS",
+      "bullets": [
+        "SE TROUVENT SUR UN MARCHÉ EN CROISSANCE",
+        "NE SONT PAS DISPONIBLES DANS LE COMMERCE DE DÉTAIL CLASSIQUE",
+        "INTÉRESSENT UN PUBLIC CIBLE LE PLUS LARGE POSSIBLE"
+      ]
+    },
+    "theory": {
+      "title": "DE LA THÉORIE À LA PRATIQUE",
+      "cardTitle": "Plan to Action",
+      "cardAlt": "Vidéo : Plan to Action"
+    },
+    "effectiveness": {
+      "title": "ATTEINDRE TON OBJECTIF PLUS VITE AVEC PLUS D’EFFICACITÉ",
+      "cards": {
+        "run90": "90 DAY RUN",
+        "run90_alt": "Vidéo : 90 Day Run",
+        "coaching": "PRIVATE COACHING",
+        "coaching_alt": "Vidéo : Private Coaching"
+      }
+    },
+    "future": {
+      "title": "POURQUOI LE MARKETING DE RÉSEAU EST L’AVENIR ?",
+      "p1": "Le monde du travail change rapidement – surtout grâce à la numérisation et à l’intelligence artificielle. Beaucoup de tâches sont automatisées, des métiers entiers évoluent ou disparaissent.",
+      "p2": "Quand plus de personnes se disputent moins d’emplois, le travail devient interchangeable : les salaires stagnent, la sécurité diminue et les vraies opportunités de développement se raréfient.",
+      "p3": "Beaucoup le ressentent déjà aujourd’hui :",
+      "list1": [
+        "→ Moins de temps malgré plus de performance",
+        "→ Moins d’argent malgré la hausse des coûts",
+        "→ Moins de liberté à cause de la dépendance"
+      ],
+      "p4": "En même temps, de nouvelles opportunités émergent",
+      "p5": "Il n’a jamais été aussi facile de travailler de façon digitale et à distance :",
+      "list2": [
+        "→ Travailler quand et où tu veux",
+        "→ Croître dans le monde entier et pas seulement localement",
+        "→ Faibles coûts fixes au lieu de fortes obligations"
+      ],
+      "p6": "Le marketing de réseau combine ces opportunités avec ce que les gens recherchent aujourd’hui : plus de temps, plus de revenus et plus d’indépendance.",
+      "p7": "Tu construis quelque chose qui t’appartient :",
+      "list3": [
+        "→ Sans capital de départ",
+        "→ Avec un système éprouvé",
+        "→ Sans connaissances préalables",
+        "→ Flexible, digital et évolutif"
+      ]
+    }
   }
 }

@@ -16,6 +16,7 @@
     "theme": "Theme"
   },
   "hero": {
+    "phrase": "EINFACH. ERFOLGREICH.",
     "subtitle": "Erfolg ist einfach – wenn du entscheidest."
   },
   "programs": {
@@ -55,7 +56,7 @@
       "name_label": "Name",
       "name_placeholder": "Vor- und Nachname",
       "email_label": "E‑Mail",
-      "email_placeholder": "dein@mail.com",
+      "email_placeholder": "dein [at] mail.com",
       "phone_label": "Mobilnummer",
       "phone_placeholder": "z. B. +49 170 1234567",
       "goal_label": "Ziel",
@@ -82,12 +83,83 @@
   "legal": {
     "imprint": {
       "title": "Impressum",
-      "content": "<p><strong>Angaben gemäß § 5 TMG</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Beispielstraße 1<br>10115 Berlin<br>Deutschland</p><p>E-Mail: info@drsimple.example</p><p>Umsatzsteuer-ID: DE123456789</p><p><em>Hinweis:</em> Dies ist ein Platzhaltertext. Bitte mit Ihren echten Angaben ersetzen.</p>"
+      "content": "<p><strong>Angaben gemäß § 5 TMG</strong></p><p>Simple Success · Alexander Kahlsdorf<br>Beispielstraße 1<br>10115 Berlin<br>Deutschland</p><p>E-Mail: Kahlsdorf@icloud.com</p><p>Umsatzsteuer-ID: DE123456789</p><p><em>Hinweis:</em> Dies ist ein Platzhaltertext. Bitte mit Ihren echten Angaben ersetzen.</p>"
     },
     "privacy": {
       "title": "Datenschutzerklärung",
-      "content": "<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Seite verwendet nur die notwendigsten Technologien.</p><h4>Verantwortlicher</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Kontakt</h4><p>info@drsimple.example</p><h4>Hinweis</h4><p>Dies ist ein Platzhaltertext. Bitte durch Ihre vollständige DSGVO-konforme Datenschutzerklärung ersetzen.</p>"
+      "content": "<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Seite verwendet nur die notwendigsten Technologien.</p><h4>Verantwortlicher</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>Kontakt</h4><p>Kahlsdorf@icloud.com</p><h4>Hinweis</h4><p>Dies ist ein Platzhaltertext. Bitte durch Ihre vollständige DSGVO-konforme Datenschutzerklärung ersetzen.</p>"
     },
     "close": "Schließen"
+  },
+  "sections": {
+    "common": {
+      "video": ""
+    },
+    "intro": {
+      "lead": "MIT DEM GESCHÄFTSMODELL DES 21. JAHRHUNDERTS ZU MEHR FINANZIELLER-, ZEITLICHER- UND ÖRTLICHER FREIHEIT.",
+      "body": "Keine Investition. Ohne Vorkenntnisse. Flexibel von Zuhause."
+    },
+    "network": {
+      "title": "WAS IST NETWORK MARKETING?",
+      "aside": "HAST DU SCHON EINMAL NACH EINER EMPFEHLUNG GEFRAGT ODER SELBER ETWAS WEITEREMPFOHLEN?",
+      "cards": {
+        "direct": "KONZEPT DIREKTVERTRIEB",
+        "direct_alt": "Video: Konzept Direktvertrieb",
+        "career": "KARRIERE CHANCE",
+        "career_alt": "Video: Karriere Chance"
+      }
+    },
+    "products": {
+      "title": "WELCHE PRODUKTE EIGNEN SICH?",
+      "cardTitle": "Produktvideo ansehen",
+      "cardAlt": "Video: Produktvorstellung",
+      "prereq": "GRUNDVORAUSSETZUNG: ICH STEHE ZU 100% HINTER MEINEN PRODUKTEN, LIEBE UND LEBE SIE!",
+      "optimal": "OPTIMAL IST ES WENN DIE PRODUKTE",
+      "bullets": [
+        "SICH IN EINEM WACHSTUMSMARKT BEFINDEN",
+        "NICHT IM KLASSISCHEN EINZELHANDEL ERHÄLTLICH SIND",
+        "FÜR EINE MÖGLICHST GROSSE ZIELGRUPPE INTERESSANT SIND"
+      ]
+    },
+    "theory": {
+      "title": "VON DER THEORIE IN DIE PRAXIS",
+      "cardTitle": "Plan to Action",
+      "cardAlt": "Video: Plan to Action"
+    },
+    "effectiveness": {
+      "title": "SCHNELLER ANS ZIEL MIT MEHR EFFEKTIVITÄT",
+      "cards": {
+        "run90": "90 DAY RUN",
+        "run90_alt": "Video: 90 Day Run",
+        "coaching": "PRIVATE COACHING",
+        "coaching_alt": "Video: Private Coaching"
+      }
+    },
+    "future": {
+      "title": "WARUM IST NETWORK MARKETING DIE ZUKUNFT?",
+      "p1": "Die Arbeitswelt verändert sich rasant – vor allem durch Digitalisierung und künstliche Intelligenz. Viele Aufgaben werden automatisiert, ganze Berufsbilder verändern sich oder fallen weg.",
+      "p2": "Wenn mehr Menschen um weniger Jobs konkurrieren, wird Arbeit austauschbar: Löhne stagnieren, Sicherheit sinkt, und echte Entwicklungschancen werden seltener.",
+      "p3": "Das spüren viele schon heute:",
+      "list1": [
+        "→ Weniger Zeit trotz mehr Leistung",
+        "→ Weniger Geld trotz steigender Kosten",
+        "→ Weniger Freiheit durch Abhängigkeit"
+      ],
+      "p4": "Gleichzeitig entstehen neue Chancen",
+      "p5": "Noch nie war es so leicht, digital und ortsunabhängig zu arbeiten:",
+      "list2": [
+        "→ Arbeiten, wann und wo du willst",
+        "→ Wachstum weltweit statt nur lokal",
+        "→ Geringe Fixkosten statt hoher Verpflichtungen"
+      ],
+      "p6": "Network Marketing verbindet diese Chancen mit dem, was Menschen heute wirklich suchen: mehr Zeit, mehr Einkommen und mehr Unabhängigkeit.",
+      "p7": "Du baust dir etwas Eigenes auf:",
+      "list3": [
+        "→ Ohne Startkapital",
+        "→ Mit einem bewährten System",
+        "→ Ohne Vorkenntnisse",
+        "→ Flexibel, digital und skalierbar"
+      ]
+    }
   }
 }

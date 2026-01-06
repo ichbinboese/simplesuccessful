@@ -1,5 +1,5 @@
 <template>
-  <PasswordGate storageKey="gate_product">
+  <PasswordGate :password="productPassword" storageKey="gate_product">
     <SecureVideo
       :src="resolvedSrc"
       :type="type"
@@ -35,6 +35,8 @@ const props = defineProps({
   controls: { type: Boolean, default: true },
   rounded: { type: Boolean, default: true }
 })
+
+const productPassword = process.env.VIDEO_PASS_PRODUCT || 'Simple!#AK'
 
 const { locale } = useI18n()
 

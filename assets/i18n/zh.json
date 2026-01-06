@@ -55,7 +55,7 @@
       "name_label": "姓名",
       "name_placeholder": "名字 + 姓氏",
       "email_label": "邮箱",
-      "email_placeholder": "you@mail.com",
+      "email_placeholder": "you [at] mail.com",
       "phone_label": "手机号",
       "phone_placeholder": "例如 +49 170 1234567",
       "goal_label": "目标",
@@ -82,12 +82,83 @@
   "legal": {
     "imprint": {
       "title": "法律声明",
-      "content": "<p><strong>供应方信息</strong></p><p>Simple Success · Alexander Kahlsdorf<br>示例街 1 号<br>10115 柏林<br>德国</p><p>邮箱：info@drsimple.example</p><p>增值税号：DE123456789</p><p><em>说明：</em> 占位内容，请替换为您的实际法律信息。</p>"
+      "content": "<p><strong>供应方信息</strong></p><p>Simple Success · Alexander Kahlsdorf<br>示例街 1 号<br>10115 柏林<br>德国</p><p>邮箱：Kahlsdorf@icloud.com</p><p>增值税号：DE123456789</p><p><em>说明：</em> 占位内容，请替换为您的实际法律信息。</p>"
     },
     "privacy": {
       "title": "隐私政策",
-      "content": "<p>我们非常重视您的隐私。本网站仅使用最低限度必要的技术。</p><h4>负责人</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>联系</h4><p>info@drsimple.example</p><h4>说明</h4><p>此为占位内容。请替换为完整且符合 GDPR 的隐私政策。</p>"
+      "content": "<p>我们非常重视您的隐私。本网站仅使用最低限度必要的技术。</p><h4>负责人</h4><p>Simple Success · Alexander Kahlsdorf</p><h4>联系</h4><p>Kahlsdorf@icloud.com</p><h4>说明</h4><p>此为占位内容。请替换为完整且符合 GDPR 的隐私政策。</p>"
     },
     "close": "关闭"
+  },
+  "sections": {
+    "common": {
+      "video": ""
+    },
+    "intro": {
+      "lead": "用21世纪的商业模式，获得更多财务、时间与地点的自由。",
+      "body": "零投入。无需经验。灵活在家开展。"
+    },
+    "network": {
+      "title": "什么是网络营销？",
+      "aside": "你有没有请求过别人推荐，或亲自把好东西推荐给别人？",
+      "cards": {
+        "direct": "直销概念",
+        "direct_alt": "视频：直销概念",
+        "career": "职业机会",
+        "career_alt": "视频：职业机会"
+      }
+    },
+    "products": {
+      "title": "哪些产品适合？",
+      "cardTitle": "观看产品视频",
+      "cardAlt": "视频：产品介绍",
+      "prereq": "基本前提：我100%支持我的产品，热爱并亲自使用它们！",
+      "optimal": "最佳情况是产品",
+      "bullets": [
+        "身处增长型市场",
+        "不在传统零售渠道销售",
+        "能吸引尽可能广泛的目标群体"
+      ]
+    },
+    "theory": {
+      "title": "从理论到实践",
+      "cardTitle": "Plan to Action",
+      "cardAlt": "视频：Plan to Action"
+    },
+    "effectiveness": {
+      "title": "更高效、更快达成目标",
+      "cards": {
+        "run90": "90 DAY RUN",
+        "run90_alt": "视频：90 Day Run",
+        "coaching": "PRIVATE COACHING",
+        "coaching_alt": "视频：Private Coaching"
+      }
+    },
+    "future": {
+      "title": "为什么网络营销是未来？",
+      "p1": "职场正在迅速变化，尤其是数字化和人工智能带来的变化。很多工作被自动化，整类职业都会改变或消失。",
+      "p2": "当更多人竞争更少的岗位时，工作变得可替代：薪资停滞，安全感下降，真正的发展机会更少。",
+      "p3": "很多人已经感受到了：",
+      "list1": [
+        "→ 付出更多，时间却更少",
+        "→ 成本上涨，收入却更少",
+        "→ 受制于人，自由更少"
+      ],
+      "p4": "同时也出现了新机会",
+      "p5": "从未有过如此容易的数字化、远程工作方式：",
+      "list2": [
+        "→ 何时何地工作由你决定",
+        "→ 面向全球增长，而非只局限本地",
+        "→ 低固定成本，少负担"
+      ],
+      "p6": "网络营销把这些机会与人们真正想要的结合起来：更多时间、更多收入和更多独立性。",
+      "p7": "你在建立属于自己的事业：",
+      "list3": [
+        "→ 无需启动资金",
+        "→ 借助成熟的系统",
+        "→ 无需经验",
+        "→ 灵活、数字化且可扩展"
+      ]
+    }
   }
 }
